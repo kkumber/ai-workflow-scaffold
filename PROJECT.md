@@ -23,7 +23,7 @@ Allowed values: `template`, `in progress`, `ready`. This scaffold source intenti
 | Configured project identity | [TODO: receiving project's observed name/purpose and relative workspace target; avoid machine-specific absolute paths] |
 | Setup owner | Orchestrator |
 | Evidence inspected | [TODO: actual manifest, configuration, instruction, and entry-point paths with observations] |
-| Guidance orientation | [TODO: project-owned Markdown and .codex/agents/*.toml read; exclusions and any reading blockers] |
+| Guidance orientation | [TODO: applicable instructions, project constraints, assigned role and relevant evidence read; exclusions/blockers] |
 | Guideline files adapted | [TODO: exact paths and project-specific changes; preserve shared rules] |
 | Setup cleanup | [TODO: exact removed wording/sections/files/folders and reasons, inspected references, retained uncertain items, or None with reason; record removals before deletion and verification afterward] |
 | Verification performed | [TODO: actual path/link/consistency checks and results] |

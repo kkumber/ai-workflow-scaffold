@@ -1,6 +1,37 @@
 # [TODO: TASK-NNN short title]
 
-This is a reusable form, not an active or approved task. Copy it using [the task guide](../README.md). Example STEP/AC/TC IDs are placeholders, not evidence. Replace all relevant `[TODO: ...]` fields before execution; use Not applicable with a reason for unaffected sections.
+This is a reusable form, not an active or approved task. Copy it using [the task guide](../README.md). Choose the short form below for small, bounded work, or the expanded sections for complex work; do not populate both. Example IDs are placeholders, not evidence. Fill relevant fields before execution. Brevity changes record format, never required planning, tests, approval or review.
+
+## Short form: small, bounded tasks
+
+Retain this section and remove unused expanded form instructions when copying. Expand a concern when it affects correctness, contracts, security, migration/concurrency, recovery or rollout. Do not hide an unresolved requirement in a short record.
+
+- Task/status/owner/mode/revision/active step: [TODO; disclose self-review]
+- Requirement/user decision and setup reference: [TODO; link PROJECT.md, do not duplicate setup state]
+- Observed behavior → expected outcome; scope and material decisions: [TODO: evidence and reason]
+- Exact existing/proposed files, actions, purposes and one owner per shared file: [TODO: compact inventory]
+- STEP-01 / AC-01: [TODO: ordered actions, observable criterion, basis and dependencies]
+- Relevant contracts/data flow/risks: [TODO: concrete interfaces, boundaries and recovery if affected; otherwise one concise scope statement]
+
+| Case / AC / kind / level | Goal and requirement basis | Given → When → Then | Test location; initial expectation/reason; mocks/limits |
+|---|---|---|---|
+| TC-01 / AC-01 / [TODO] | [TODO] | [TODO] | [TODO] |
+
+| Case / initial or final | Exact command/procedure and working directory | Actual result/classification/counts; meaningful failure or limit |
+|---|---|---|
+| [TODO] | [TODO] | Not run |
+
+- Test-quality review: [TODO: revision/mode, alignment/assertions/fixtures and missing cases, actual findings/resolutions; documentation uses applicable direct review]
+- Checkpoint: [TODO: step/revision, compact behavior/case-group/results/risks/scope summary and evidence references; explicit approval question]
+- Actual user decision and approved scope/revision: [TODO: pending until reply unless specific documentation authorization applies; renew for material changes]
+- Final review/acceptance: [TODO: mode, findings/dispositions, AC-to-evidence mapping, document/map changes and remaining limits]
+- Resume: [TODO: last valid stage, approval applicability, blocker and precise next action; record changed facts only]
+
+Keep actual results here; todo/done reference them. Apply every relevant root workflow requirement. Do not duplicate case tables, logs or checkpoint text in other records or chat.
+
+## Expanded form
+
+Use the following sections instead of the short form when the task warrants their detail. Mark an unaffected concern once with a reason rather than filling repetitive Not applicable fields.
 
 ## Task record
 
@@ -11,7 +42,7 @@ This is a reusable form, not an active or approved task. Copy it using [the task
 - Requirements source: [TODO: canonical requirement references and user decisions]
 - Plan revision: [TODO: simple revision label, e.g. R1; increment on material changes]
 - Active step: [TODO: STEP ID]
-- Project setup reference: [PROJECT.md](../../PROJECT.md), including target identity, setup status, and relevant unresolved bindings. Do not duplicate setup state here. Complete the root Markdown orientation and applicable first-use setup before application work; this task may document setup itself when that is the requested work.
+- Project setup reference: [PROJECT.md](../../PROJECT.md), including target identity, setup status, and relevant unresolved bindings. Do not duplicate setup state here. Complete the root scoped orientation and applicable first-use setup before application work; this task may document setup itself when that is the requested work.
 
 ## Objective, current behavior, and scope
 
@@ -95,10 +126,10 @@ Skipped checks: [TODO: each reason; record explicit user acceptance if required 
 - Step / plan revision / case IDs: [TODO]
 - Status: [TODO: not presented, awaiting user approval, approved, changes requested]
 - Goal and expected behavior: [TODO]
-- Cases, inputs/actions/expected results: [TODO: refer to matrix; chat report must stand alone]
-- Actual initial results and failure meaning: [TODO]
-- Coverage limits, blocked checks, and review findings/resolutions: [TODO]
-- Planned application files and changes: [TODO]
+- Cases: [TODO: reference matrix IDs; chat summarizes relevant input/action/outcome groups and significant boundaries]
+- Initial evidence: [TODO: reference command/result rows; summarize failure meaning]
+- Coverage/review: [TODO: reference limits and test-quality review above]
+- Implementation scope: [TODO: reference exact files/step above]
 - Approval question: Do you approve this step's expected behavior, test cases, and planned implementation?
 - User decision: [TODO: pending until an actual reply; accurate decision or message reference, no invented quote/time]
 - Approved scope/revision: [TODO: exact step and expectation revision; never infer blanket approval]
@@ -109,13 +140,15 @@ Save evidence, update todo.md, and pause application changes while awaiting the 
 ## Post-implementation review and acceptance
 
 - Final evidence: [TODO: link rows above; no duplicate test counts]
-- Changed files: [TODO: actual additions/modifications/deletions and purposes]
+- Changed files: [TODO: update canonical inventory above with actual purposes]
 - Review mode/findings/dispositions: [TODO]
 - Criterion-to-result mapping: [TODO: each AC to evidence or explicit remaining limit]
 - Map/document updates: [TODO]
 - Remaining work and risks: [TODO]
 
 Only move entries to done.md when the applicable approval, implementation, verification, review, and documentation conditions are satisfied. No blocking finding may remain open. Tests support covered behavior; they do not prove all requirements correct.
+
+Keep cases, commands/results and decisions canonical in this plan; todo and done reference them. Update changed facts only; omit repetitive unaffected subsections after stating why they do not apply. Do not copy shared policy or full logs into records. Use the root concise-report defaults in chat; expand for material decisions and risks.
 
 ## Resume and recovery
 
