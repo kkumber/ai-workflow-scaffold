@@ -22,6 +22,19 @@ Before the user checkpoint, edit relevant tests, test-only fixtures/mocks, and m
 
 Client-side feedback may reflect approved rules; it does not replace server enforcement.
 
+## Simple, reusable styling and components
+
+Follow the shared simplicity, reuse, and modularity rules in [AGENTS.md](../AGENTS.md). Apply them to all frontend code, including JavaScript/TypeScript, templates, components, and CSS. Complete the root pre-edit reuse check before changing frontend implementation: read relevant existing components, styles, tokens, functions, and their usages before deciding to reuse, extend, or add code.
+
+When a frontend framework is present, follow its actual version and established project conventions for components, state, rendering, styling, accessibility, and tests. Prefer supported native features over custom replacements. Keep names, data flow, templates, and event handling straightforward for manual editing; add abstractions or separate files only when they earn their complexity. Preserve required framework behavior and syntax while applying the shared readability rules.
+
+- Define a shared visual treatment once using the project's established styling approach: a reusable class, scoped component style, or component variant. Apply it to any element or component that needs that same treatment. Reuse existing styles and design tokens before adding new ones; avoid duplicated CSS declarations and repeated inline style objects.
+- Keep shared styling opt-in and clearly named by its purpose, such as a button or card style. Use a small base style with meaningful variants when needed. Scope selectors to their intended elements/components; avoid broad global rules, deeply coupled selectors, and unrelated overrides that create accidental dependencies.
+- Keep application-state decisions in clear JavaScript/TypeScript logic, then select the appropriate class, variant, or semantic attribute. CSS defines how that state looks. Avoid embedding business conditions or simulated if/else logic in CSS variables, arithmetic, or selector chains. Use native `:hover`, `:focus-visible`, `:disabled`, media/container queries, and normal layout tools where they naturally describe presentation. Dynamic numeric values may come from application code when genuinely needed; do not move ordinary responsive styling into JavaScript.
+- Extract a component or helper when repeated markup, behavior, or styling has a cohesive reusable purpose. Split component, logic, or stylesheet files when their responsibilities or complexity warrant it; keep a small cohesive implementation together. Follow existing project conventions instead of adding a new styling framework, utility layer, or file for every small rule.
+
+During review, check that shared styles are reused consistently, variants remain understandable, state logic stays in the right layer, and file boundaries improve clarity. These rules do not authorize unrelated refactoring or waive the shared implementation checkpoint.
+
 ## SEO for marketing websites
 
 Treat SEO as a core acceptance concern for public marketing websites, landing pages, and other content intended for search discovery. Plan it alongside content, accessibility, and performance. Establish the audience, page purpose, search intent, approved keyphrases, public domain, and indexing requirements from project evidence and the active plan. Apply only relevant checks to internal applications or deliberately private pages; do not make them indexable by default.

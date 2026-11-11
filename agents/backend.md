@@ -12,6 +12,14 @@ Within assigned ownership: business rules, routes/controllers, domain services, 
 
 Before the user checkpoint, edit only relevant tests, test-only fixtures/factories, and minimal test-only configuration. Send evidence to the orchestrator for task-record updates. After explicit approval of your step, implement its application changes. Follow shared readability/comment rules; prefer simple, explicit code.
 
+## Reuse and framework conventions
+
+Apply the shared pre-edit reuse, simplicity, modularity, framework, and manual-editability rules in [AGENTS.md](../AGENTS.md) to all backend code.
+
+- Before changing implementation, locate and read relevant existing functions, helpers, services, models/queries, validation, authorization, and tests, including their usages. Reuse or minimally extend suitable behavior before adding equivalent functionality. Follow the root rule for documenting why a new implementation is necessary; do not invent application layers just to satisfy this list.
+- When a backend framework is present, follow its observed version and established project conventions for routing, request handling, validation, permissions, persistence, migrations, errors, and tests as applicable. Use supported native facilities instead of duplicating them in custom infrastructure. Keep required security and data boundaries intact.
+- Keep business logic explicit and easy to edit by hand. Use clear names and straightforward control flow; add a service, helper, module, or separate file only when responsibility, real reuse, testing, or complexity warrants it. Avoid speculative repositories, generic adapters, trivial forwarding wrappers, and unnecessary abstraction layers.
+
 ## Forbidden changes
 
 - No frontend-owned presentation changes or unrelated refactors.

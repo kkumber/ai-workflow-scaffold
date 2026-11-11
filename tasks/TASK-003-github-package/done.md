@@ -5,6 +5,31 @@ Pending work: [todo.md](todo.md)
 
 WORK-01–WORK-04 are complete. The user explicitly accepted the documented Windows file-symlink verification limit. The unchanged TC-13 still fails for fixture setup, not application behavior; it is not counted as passing coverage.
 
+## WORK-05: Simple reusable code and styling
+
+- Step / criterion: STEP-05 / AC-10. Authorization: user's direct request for reusable CSS, simple application logic, and justified modular file separation across all code. This is a separately completed documentation supplement, not a runtime change or new approval for unrelated code edits.
+- Modified: AGENTS.md (canonical cross-language simplicity/reuse, layer responsibilities, and meaningful module boundaries); agents/frontend.md (shared opt-in styles, base/variants, state logic, and proportionate component/file extraction); plans.md (scope and direct-check plan); todo.md (completion reference); done.md (this evidence). Added/deleted deliverables: None. Temporary validation helper was created and removed.
+- Connections: root rules apply to all owners; frontend guidance specializes them for styles and components. Reuse actual shared behavior; do not force unrelated code into generic abstractions. Use JS/TS for business/state decisions and CSS for presentation, preserving native interaction states and responsive/layout tools. Split files for responsibility, actual reuse, testing, or reduced complexity, rather than one file per small function/rule.
+- Verification: `node .style-guidance-validation.cjs` from the repository root passed nine requested-rule checks and twelve relative Markdown links across the two guidance files. `git diff --check` passed with line-ending notices. Initial inline Node check was rejected by lean-ctx's inline-execution restriction; the explicitly supported script-file route ran successfully, then the helper was removed. No application tests/builds ran because only guidance changed.
+- Review: targeted orchestrator self-review; no actionable findings. Existing implementation/test ownership, approval gates, SEO guidance, and framework conventions preserved. Other workspace changes, including CLI edits observed in git diff, were not modified or reviewed as part of this supplement.
+- Remaining work/blockers for this supplement: None. No dependencies, database actions, deployment, publication, or push. Historical package verification and accepted file-symlink limit above remain historical evidence, not fresh verification of unrelated CLI changes.
+
+## WORK-06: Inspect existing reusable code before edits
+
+- Step / criterion: STEP-06 / AC-11. Authorization: user's specific request that AI read existing reusable components, styles, and functions before making changes to avoid duplicate functionality.
+- Modified files: AGENTS.md (mandatory shared pre-edit search/read/reuse decision); agents/frontend.md (reference to that check for frontend implementation); plans.md (scope/ownership/checks); todo.md (completion reference); done.md (evidence). Added/deleted deliverables: None.
+- Completed rule: use the architecture map and targeted searches; read relevant implementations, usages, and tests rather than relying on names. Reuse or minimally extend suitable existing code. Explain why a new implementation is needed, including a search finding no suitable candidates. Inspection stays scoped and does not force incompatible reuse or unrelated refactoring. Root rule applies across roles/languages; frontend instructions refer to it rather than redefine its contract.
+- Verification: `git diff --check` passed with LF/CRLF notices. Reviewed `git diff -- AGENTS.md agents/frontend.md` directly for correct before-edit timing, named reusable assets, actual reading, reuse/extension preference, justification, and preserved scope/approval boundaries. Targeted orchestrator self-review found no actionable issues. No new links or application code changes; no application tests run for written guidance.
+- Remaining work/blockers: None for AC-11. Existing unrelated workspace changes preserved. No dependencies, database actions, deployment, publication, or push performed.
+
+## WORK-07: Backend reuse and framework-aware readable code
+
+- Step / criterion: STEP-07 / AC-12. Authorization: user's direct request to explicitly cover backend reuse and framework best practices while keeping all code simple, readable, and manually editable.
+- Modified: AGENTS.md (shared framework/version/native-facility and manual-editability rules); agents/backend.md (explicit pre-edit reuse check and backend application of framework/simplicity rules); agents/frontend.md (matching framework/manual-editability instruction); plans.md (scope and checks); todo.md (completion reference); done.md (evidence). Added/deleted deliverables: None.
+- Connections: canonical rules apply to both owners; backend guidance covers existing helpers/services/models, validation, authorization, and tests before changes; frontend guidance covers its existing components/styles and framework conventions. Both use the observed framework version and supported facilities while avoiding speculative layers, unnecessary dependencies, and trivial wrapper files. Simplicity preserves framework-required behavior and security/data boundaries.
+- Verification: `git diff --check` passed with LF/CRLF notices. Direct inspection of the edited shared/frontend text and rereading backend lines 9–32 confirmed explicit backend coverage, scoped reuse, native framework conventions, clear control/data flow, manual-editability, and preserved ownership/checkpoint requirements. Existing relative link to root guidance resolves; no new target introduced. Targeted orchestrator self-review found no actionable findings.
+- Application tests/builds not run because only guidance changed. No application code, dependencies, database actions, deployment, publication, or push changed. Unrelated workspace edits preserved. Remaining work/blockers for AC-12: None.
+
 ## WORK-01: Package and adaptable setup guidance
 
 - Criteria: STEP-01 / AC-01–AC-03, with STEP-03 R2 superseding the original manual-copy default. User authorization: initial specific metadata/README request and later explicit “approved” reply to the R2 implementation checkpoint.
