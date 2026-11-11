@@ -24,7 +24,7 @@ For reproducible adoption, pin a reviewed commit by replacing `COMMIT_SHA` with 
 npx github:kkumber/ai-workflow-scaffold#COMMIT_SHA
 ```
 
-npx runs the setup command from npm's cache without adding a project dependency. The command copies missing reusable documents into the current directory, preserves existing files, and reports files that need merging. It checks managed paths for obstructing files and links before copying; resolve reported conflicts and rerun. There is no overwrite or force option. The receiving project's package manifest and lockfile are left untouched. See the [npx reference](https://docs.npmjs.com/cli/v11/commands/npx/).
+npx runs the command from npm's cache without adding a project dependency. On first use, it copies missing reusable documents into the current directory, preserves existing files, and records upstream baselines in `.ai-workflow-scaffold/state.json`. Later runs use that state to update tracked documents while preserving project customizations. Managed paths are checked for obstructing files and links before writes. There is no force-replace option. The receiving project's package manifest and lockfile are left untouched. See the [npx reference](https://docs.npmjs.com/cli/v11/commands/npx/).
 
 Show usage without copying files:
 
@@ -43,24 +43,54 @@ That optional install adds a development dependency; commit its manifest/lockfil
 
 The GitHub commands require these package files to be committed and pushed to the selected revision. Fetching by package name without a prior local install assumes separate npm registry publication; this scaffold does not require that publication.
 
+## Update an adopted project
+
+After initialization, rerunning the command performs a managed update. You can also request it explicitly:
+
+```sh
+npx github:kkumber/ai-workflow-scaffold update
+```
+
+The updater compares the saved upstream baseline, your current document, and the selected package's new template. Untouched documents receive upstream changes; separate edits are combined with Git's three-way text merge. Git must be available when both sides changed. Local customizations and deliberately deleted files are retained when upstream is unchanged. A deleted file changed upstream is reported for review, not recreated. CRLF documents keep their newline style. A content fingerprint detects template changes even when the package version string was not changed.
+
+If edits overlap or an original baseline is unknown, the project file stays untouched and the upstream copy is saved at `.ai-workflow-scaffold/incoming/<document-path>`. Independent clean updates may still apply; the command returns exit code 2 for unresolved conflicts. Review the incoming copy and edit the project document to combine the changes. Then explicitly acknowledge that document:
+
+```sh
+npx github:kkumber/ai-workflow-scaffold resolve AGENTS.md
+```
+
+Use the reported canonical document path; for a lowercase root `readme.md`, the resolve argument is still `README.md`. Resolution records the exact staged upstream baseline and preserves your project file, including a deliberate deletion. It does not apply or verify your manual merge. Leave incoming copies unedited; changes to review artifacts are preserved and must be moved aside or reviewed before they can be replaced. A later command can then merge future upstream changes using the acknowledged base.
+
+Keep `.ai-workflow-scaffold/state.json` with the project-owned guidance, normally in version control, and retain it during first-use cleanup. It stores upstream templates, selected version/content identities, and pending upstream text, not backups of your customized documents. Removing it loses merge history. A lock prevents overlapping updater runs; if a crash leaves a lock, confirm no updater is running before removing the reported lock file. Each existing document and state file is replaced through a temporary file and rename, but an IO interruption can still leave some whole-file updates applied before state is saved. Fix the IO problem and retry. If the retry reports an unrecognized incoming artifact written before the state save failed, preserve and review it, move that reported artifact aside, then rerun; do not reset state or discard unreviewed project content. Updates do not provide a filesystem-wide transaction or semantic review of merged prose.
+
+For a project installed with the old copy-only command, run normal initialization once to start tracking. Existing custom files are preserved with unknown originals; the next update stages them for one-time manual integration and resolution. Missing files are copied during this initial adoption, so review any intentional legacy deletions first. `update` without state stops and explains initialization; it never guesses a historical baseline.
+
+npx uses the package revision you request. To select a reviewed new revision explicitly, replace `COMMIT_SHA` with its full commit hash:
+
+```sh
+npx github:kkumber/ai-workflow-scaffold#COMMIT_SHA update
+```
+
+A pin to an older commit intentionally keeps that older revision. The CLI itself does not fetch a newer revision or publish changes.
+
 ## Integrate the workflow
 
 1. Read the receiving project's existing instructions and project-owned Markdown before making changes. Read this package's supplied guidance as the setup reference.
 2. Run the npx command above to copy `AGENTS.md`, `PROJECT.md`, `ARCHITECTURE.md`, `agents/*.md`, `tasks/README.md`, `tasks/_template/*.md`, and a root README into matching project-owned paths. It creates missing directories and copies only missing files; it does not copy source `tasks/TASK-*` history. For manual adoption, copy that same file set from an installed package or checkout after checking destinations.
-3. Review reported preserved files and merge relevant workflow guidance manually or with the orchestrator. The command does not merge or personalize existing content. A root README with any casing, including `readme.md`, is preserved without adding a second one. Keep useful project content and installation guidance.
+3. On initialization, review preserved custom files and merge relevant workflow guidance manually or with the orchestrator. Their original upstream content is unknown; managed updates need the one-time integration described above. The command does not personalize project content. A single existing root README with any casing, including `readme.md`, is retained without adding another; multiple root README variants are rejected as ambiguous. Keep useful project content and installation guidance.
 4. Keep the receiving project's own `package.json`; the scaffold's manifest is distribution metadata, not an application manifest to copy. Do not edit personalized guidance inside `node_modules`, where reinstalls can replace it.
 5. Make sure your agent host reads the project-owned `AGENTS.md`. Markdown role files describe duties; they do not register executable agents or guarantee that a host automatically loads instructions from dependencies.
-6. Ask the orchestrator to perform first-use setup under [AGENTS.md](AGENTS.md). It inspects the project, adapts specific wording while preserving document structure and shared policies, and records evidence and setup status in [PROJECT.md](PROJECT.md). Remove source-history links from copied documents when those task records were not copied.
+6. Ask the orchestrator to perform first-use setup under [AGENTS.md](AGENTS.md). It inspects the project, adapts project-specific wording, cleans up obsolete setup material, and records evidence and status in [PROJECT.md](PROJECT.md). Preserve shared policies and useful project content; remove references to source-only files that were not copied.
 
 Example setup request:
 
 > Set up this scaffold for the current project. Merge existing instructions, inspect actual files and commands, adapt the root README and workflow documents, preserve shared policies, and record setup evidence in PROJECT.md. Do not invent a stack or implement application features.
 
-Commit the integrated project-owned guidance so the workflow remains available independently of the installed dependency. A later package update does not refresh those copies automatically; review and merge relevant upstream changes while retaining project customizations.
+Commit the integrated project-owned guidance and update state so the workflow remains available independently of the installed dependency. Later managed updates use the saved originals to merge upstream changes; review clean results and resolve reported conflicts while retaining project customizations.
 
 ## Adapt this README to the receiving project
 
-During first use, retain this document's section structure and change project-specific wording in place. Update its title and introduction to the observed project name, purpose, users, and workflows. In the installation section, document the project's actual prerequisites and install commands; keep any useful scaffold installation reference clearly identified as workflow tooling. In setup sections, document verified configuration steps and entry points. Never copy example commands as established project commands without inspecting configuration.
+During first use, use this document's section structure as a starting point and change project-specific wording in place. Update its title and introduction to the observed project name, purpose, users, and workflows. In the installation section, document the project's actual prerequisites and install commands; keep any still-useful scaffold reference clearly identified as workflow tooling. In setup sections, document verified configuration steps and entry points. Remove obsolete setup-only sections during final cleanup. Never copy example commands as established project commands without inspecting configuration.
 
 Preserve existing README content and user customizations. Reference [PROJECT.md](PROJECT.md) for canonical ownership, command definitions, setup state, and inspected evidence; do not maintain a conflicting second setup record here. Distinguish commands found in configuration from commands actually executed. If stack, commands, or application layout are unknown, say so rather than selecting them. Resolve unknowns before dependent work.
 
@@ -72,8 +102,12 @@ Start with [AGENTS.md](AGENTS.md), project context in [PROJECT.md](PROJECT.md), 
 
 Each task uses [plans.md](tasks/_template/plans.md), [todo.md](tasks/_template/todo.md), and [done.md](tasks/_template/done.md). For application behavior, write and run tests, review initial results, obtain the user's explicit step approval, implement, verify, review, and record completion. Documentation setup uses the specific permissions and direct checks defined in AGENTS.md.
 
+## Finish setup and remove scaffolding
+
+Before marking a receiving project's setup ready, follow the cleanup step in AGENTS.md. Remove obsolete adoption walkthroughs, scaffold branding/examples, and source-maintenance sections after replacing them with actual project information. This one-time cleanup section may itself be removed when complete. Inspect candidate scaffold-only files/folders and their references before removal; record exact removals/reasons in PROJECT.md and repair links afterward. Preserve project content, shared policies, reusable roles/task forms, actual setup/task evidence, and `.ai-workflow-scaffold/` tracking while updates are used. Do not delete the whole tasks folder or installed package/cache. Contextual cleanup is the orchestrator's adoption step, not an automatic deletion hook; tracked updates preserve local deletions or report conflicts if upstream changed the deleted material.
+
 ## Maintain the scaffold source
 
-When maintaining this repository itself, leave its setup status as `template` and future task forms unfilled. Inspect package contents with `npm pack --dry-run` before sharing a revision. The package includes source task history so links resolve inside the distribution; receiving projects copy only the reusable guidance listed above.
+When maintaining this repository itself, leave its setup status as `template` and future task forms unfilled; retain these reusable setup instructions. Inspect package contents with `npm pack --dry-run` before sharing a revision. Both the package payload and CLI copies exclude this repository's TASK-* history. Only tasks/README.md and tasks/_template/*.md are included from tasks; repository-local task records remain here as maintenance history.
 
 Run `npm test` to exercise the setup command using Node's built-in test runner and isolated temporary projects. Link tests require permission to create filesystem links, including file symlinks on Windows. These are scaffold-tool tests, not a receiving application's test system. No database or deployment is supplied. The package currently declares `UNLICENSED`; no open-source license grant is included.

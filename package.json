@@ -1,6 +1,6 @@
 {
   "name": "ai-workflow-scaffold",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Portable Markdown agent workflow with project setup, role boundaries, and test-first approval checkpoints.",
   "license": "UNLICENSED",
   "bin": {
@@ -10,7 +10,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test tests/scaffold.test.cjs"
+    "test": "node --test tests/scaffold.test.cjs tests/updates.test.cjs"
   },
   "repository": {
     "type": "git",
@@ -29,12 +29,14 @@
   ],
   "files": [
     "bin/*.cjs",
+    "lib/*.cjs",
     "tests/*.cjs",
     "README.md",
     "AGENTS.md",
     "PROJECT.md",
     "ARCHITECTURE.md",
     "agents/*.md",
-    "tasks/**/*.md"
+    "tasks/README.md",
+    "tasks/_template/*.md"
   ]
 }

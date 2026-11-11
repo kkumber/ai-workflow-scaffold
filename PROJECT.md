@@ -2,13 +2,13 @@
 
 ## Current template repository
 
-This repository supplies portable Markdown instructions for an orchestrator, backend, frontend, and read-only reviewer. Its users are project owners and AI agents adopting a test-first approval workflow. The approved bootstrap requirements and evidence live in [TASK-001](tasks/TASK-001-bootstrap-workflow/plans.md).
+This repository supplies portable Markdown instructions for an orchestrator, backend, frontend, and read-only reviewer. Its users are project owners and AI agents adopting a test-first approval workflow. This source repository's maintenance task history is intentionally excluded from the package and receiving-project copies.
 
 This is a documentation template, not a configured application or test platform. No application stack, automated test runner, runtime API, database, or deployment target is established by these files. Navigation is in [ARCHITECTURE.md](ARCHITECTURE.md); adoption instructions are in [tasks/README.md](tasks/README.md).
 
-[package.json](package.json) defines the `ai-workflow-scaffold` package for GitHub installation. Its npx command, [bin/ai-workflow-scaffold.cjs](bin/ai-workflow-scaffold.cjs), copies missing reusable guidance into the current project while preserving existing files and reporting merge needs. [README.md](README.md) covers setup and project-specific README adaptation. Requirements: Node.js >=20, npm/npx, and Git for GitHub fetching. `npm test` runs [tests/scaffold.test.cjs](tests/scaffold.test.cjs) using Node's built-in runner; it tests the scaffold tool, not the receiving application. There are no install hooks or runtime dependencies. During adoption, keep the receiving project's own package manifest and merge its existing README; remove source-tool paths/history references when not copied. Distribution metadata does not establish an application stack or verified receiving-project commands.
+[package.json](package.json) defines the `ai-workflow-scaffold` package for GitHub installation. Its npx command, [bin/ai-workflow-scaffold.cjs](bin/ai-workflow-scaffold.cjs), initializes missing reusable guidance and upstream tracking, then uses managed updates on reruns. Shared allowlist/path handling lives in [lib/scaffold-files.cjs](lib/scaffold-files.cjs); [lib/scaffold-updates.cjs](lib/scaffold-updates.cjs) owns state, clean merges, staged conflicts, and explicit resolution. [README.md](README.md) covers setup, legacy migration, updates, and project-specific README adaptation. Requirements: Node.js >=20, npm/npx, Git for GitHub fetching and two-sided text merges. `npm test` runs [setup tests](tests/scaffold.test.cjs) and [update tests](tests/updates.test.cjs) with Node's built-in runner; it tests the tool, not the receiving application. Keep `.ai-workflow-scaffold/state.json` and pending review state with adopted guidance while managed updates are used. There are no install hooks or npm runtime dependencies. During adoption, keep the receiving project's own manifest and customized README; remove source-tool paths/history references when not copied. Distribution metadata does not establish an application stack or verified receiving-project commands.
 
-The orchestrator owns these coordination documents. Backend/frontend application paths are not assigned here because no application paths have been verified. Do not infer them from example directories. The introduction above describes the scaffold source only; during adoption, change these specific paragraphs to describe the receiving project and remove the source-history link if its target was not copied. Keep the document structure.
+The orchestrator owns these coordination documents. Backend/frontend application paths are not assigned here because no application paths have been verified. Do not infer them from example directories. The introduction above describes the scaffold source only; during adoption, change these paragraphs to describe the receiving project. Preserve reusable sections and follow AGENTS.md when removing obsolete setup-only content.
 
 ## Workflow setup record
 
@@ -23,13 +23,14 @@ Allowed values: `template`, `in progress`, `ready`. This scaffold source intenti
 | Evidence inspected | [TODO: actual manifest, configuration, instruction, and entry-point paths with observations] |
 | Markdown orientation | [TODO: project-owned files read; exclusions and any reading blockers] |
 | Guideline files adapted | [TODO: exact paths and project-specific changes; preserve shared rules] |
+| Setup cleanup | [TODO: exact removed wording/sections/files/folders and reasons, inspected references, retained uncertain items, or None with reason; record removals before deletion and verification afterward] |
 | Verification performed | [TODO: actual path/link/consistency checks and results] |
 | Commands discovered but not run | [TODO: distinguish configured commands from verified results] |
 | Blocking setup decisions | [TODO: question, impact, owner, next action; None when resolved] |
 | Nonblocking unknowns | [TODO: values deferred until relevant application work] |
 | Resume / next action | [TODO: remaining setup action or None when ready] |
 
-Set `ready` only after the target is identified, relevant project bindings and links are accurate, shared policies remain intact, and no blocking setup decision remains. Do not infer readiness from the absence of TODO markers: reusable task placeholders must remain blank, and nonblocking project unknowns may remain explicit. Ready describes documentation setup only. Reuse a matching ready record without wholesale rewrites; check stale or copied records against the actual project.
+Set `ready` only after the target is identified, relevant project bindings and links are accurate, applicable cleanup is complete, shared policies remain intact, and no blocking setup decision remains. Do not infer readiness from the absence of TODO markers: reusable task placeholders must remain blank, and nonblocking project unknowns may remain explicit. Ready describes documentation setup only. Reuse a matching ready record without wholesale rewrites; check stale or copied records against the actual project.
 
 ## Adoption fields
 

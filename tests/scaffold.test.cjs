@@ -71,12 +71,12 @@ function assertRejected(result, destinationPattern) {
   assert.match(result.stderr, destinationPattern, 'The error must identify the conflicting destination.');
 }
 
-test('TC-04 / AC-05: an empty project receives exactly the eleven reusable documents', function (testContext) {
+test('TC-04 / TASK-004 AC-01: an empty project receives eleven documents and managed-update state', function (testContext) {
   const workspace = createWorkspace(testContext);
   const result = runCommand(workspace.projectRoot);
 
   assertSuccessful(result);
-  assert.deepEqual(listFiles(workspace.projectRoot), [...reusableFiles].sort());
+  assert.deepEqual(listFiles(workspace.projectRoot), [...reusableFiles, '.ai-workflow-scaffold/state.json'].sort());
   for (const relativePath of reusableFiles) {
     assert.deepEqual(
       fs.readFileSync(path.join(workspace.projectRoot, relativePath)),
