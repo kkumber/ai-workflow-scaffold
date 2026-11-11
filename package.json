@@ -1,0 +1,40 @@
+{
+  "name": "ai-workflow-scaffold",
+  "version": "0.1.0",
+  "description": "Portable Markdown agent workflow with project setup, role boundaries, and test-first approval checkpoints.",
+  "license": "UNLICENSED",
+  "bin": {
+    "ai-workflow-scaffold": "bin/ai-workflow-scaffold.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/scaffold.test.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkumber/ai-workflow-scaffold.git"
+  },
+  "homepage": "https://github.com/kkumber/ai-workflow-scaffold#readme",
+  "bugs": {
+    "url": "https://github.com/kkumber/ai-workflow-scaffold/issues"
+  },
+  "keywords": [
+    "agents",
+    "workflow",
+    "scaffold",
+    "documentation",
+    "test-first"
+  ],
+  "files": [
+    "bin/*.cjs",
+    "tests/*.cjs",
+    "README.md",
+    "AGENTS.md",
+    "PROJECT.md",
+    "ARCHITECTURE.md",
+    "agents/*.md",
+    "tasks/**/*.md"
+  ]
+}

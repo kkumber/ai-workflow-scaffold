@@ -6,6 +6,8 @@ This repository supplies portable Markdown instructions for an orchestrator, bac
 
 This is a documentation template, not a configured application or test platform. No application stack, automated test runner, runtime API, database, or deployment target is established by these files. Navigation is in [ARCHITECTURE.md](ARCHITECTURE.md); adoption instructions are in [tasks/README.md](tasks/README.md).
 
+[package.json](package.json) defines the `ai-workflow-scaffold` package for GitHub installation. Its npx command, [bin/ai-workflow-scaffold.cjs](bin/ai-workflow-scaffold.cjs), copies missing reusable guidance into the current project while preserving existing files and reporting merge needs. [README.md](README.md) covers setup and project-specific README adaptation. Requirements: Node.js >=20, npm/npx, and Git for GitHub fetching. `npm test` runs [tests/scaffold.test.cjs](tests/scaffold.test.cjs) using Node's built-in runner; it tests the scaffold tool, not the receiving application. There are no install hooks or runtime dependencies. During adoption, keep the receiving project's own package manifest and merge its existing README; remove source-tool paths/history references when not copied. Distribution metadata does not establish an application stack or verified receiving-project commands.
+
 The orchestrator owns these coordination documents. Backend/frontend application paths are not assigned here because no application paths have been verified. Do not infer them from example directories. The introduction above describes the scaffold source only; during adoption, change these specific paragraphs to describe the receiving project and remove the source-history link if its target was not copied. Keep the document structure.
 
 ## Workflow setup record

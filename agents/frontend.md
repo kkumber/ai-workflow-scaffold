@@ -8,7 +8,7 @@ If first-use setup is incomplete or mismatched, report relevant gaps to the orch
 
 ## Allowed changes
 
-Within assigned paths: UI structure, styles, interaction, responsive behavior, accessibility, and relevant frontend tests. Use established components and patterns. Assign shared-file ownership before edits.
+Within assigned paths: UI structure, styles, interaction, responsive behavior, accessibility, marketing-site SEO, and relevant frontend tests. Use established components and patterns. Assign shared-file ownership before edits.
 
 Before the user checkpoint, edit relevant tests, test-only fixtures/mocks, and minimal test-only configuration only. The orchestrator maintains coordination records from your evidence. Change application files only after explicit user approval of your step.
 
@@ -22,10 +22,26 @@ Before the user checkpoint, edit relevant tests, test-only fixtures/mocks, and m
 
 Client-side feedback may reflect approved rules; it does not replace server enforcement.
 
+## SEO for marketing websites
+
+Treat SEO as a core acceptance concern for public marketing websites, landing pages, and other content intended for search discovery. Plan it alongside content, accessibility, and performance. Establish the audience, page purpose, search intent, approved keyphrases, public domain, and indexing requirements from project evidence and the active plan. Apply only relevant checks to internal applications or deliberately private pages; do not make them indexable by default.
+
+- **Search intent and keyphrases:** give each important page a clear topic and useful, original content that answers its audience's needs. Use approved primary and related keyphrases naturally in titles, headings, visible copy, descriptive links, and appropriate URLs. Avoid keyword stuffing, hidden text, invented search-volume claims, or treating a meta keywords tag as an optimization strategy.
+- **Page metadata:** provide a unique, descriptive `<title>` and useful meta description for each indexable page. Use the framework's established metadata system, the correct document language and viewport, and an accurate absolute canonical URL where appropriate. Ensure route-specific metadata updates correctly; avoid duplicate tags and leaking development domains or placeholder branding.
+- **Semantic HTML:** use meaningful landmarks such as `header`, `nav`, `main`, and `footer`, plus `article` and `section` where appropriate. Give each page a clear primary heading and a logical heading hierarchy. Use real anchor links with descriptive text for navigation, buttons for actions, accessible labels, and meaningful image alternatives; decorative images use empty alt text. Do not choose tags only for their visual styling or add keyphrases to unrelated alt text.
+- **Open Graph and social media:** supply accurate `og:title`, `og:description`, `og:type`, `og:url`, and `og:image`, plus image alt text and dimensions when known. Add suitable social-card metadata for the intended platforms. Use approved, relevant preview media with absolute, publicly reachable URLs and valid media types. Keep preview titles, descriptions, canonical URLs, and branding consistent with the page; verify media availability and actual previews where tooling permits. Social previews support sharing and are not a promise of search ranking gains.
+- **Crawlable content and routes:** make important copy, metadata, and navigation available to crawlers using the project's established rendering approach. Prefer server-rendered or statically generated marketing content when supported; do not assume every crawler or preview service executes client JavaScript. Use stable, meaningful URLs and crawlable links. Verify intended status codes, redirects, canonical behavior, and missing-page behavior through the responsible owner.
+- **Indexing and discovery:** coordinate accurate sitemap entries, robots directives, canonical rules, and `hreflang` for actual localized equivalents when relevant. Include only intended canonical, indexable URLs in sitemaps. Check that public production pages are not accidentally marked `noindex`; keep staging/private content protected according to project requirements. Robots directives are not access control. Server headers, redirects, authentication, and infrastructure changes require their assigned owner and checkpoint.
+- **Structured data:** use relevant supported schema only when it accurately represents visible page content and verified business facts. Validate it with appropriate tooling when applicable. Never fabricate reviews, ratings, locations, offers, or eligibility claims to obtain rich results.
+- **Media and performance:** optimize image formats, responsive sizes, compression, dimensions, fonts, scripts, and loading behavior. Avoid lazy-loading the primary above-the-fold image when it harms loading performance; defer offscreen media where appropriate. Check mobile usability, layout stability, and relevant Core Web Vitals using available evidence. Do not trade away accessibility or useful content for an audit score.
+- **Verification and handoff:** derive SEO cases from the affected pages and approved requirements. Inspect initial HTML and rendered output, titles/descriptions/canonicals, headings, indexability, links, and social media assets. Use existing automated checks and focused browser/audit tools where appropriate; record actual results, inaccessible production-only checks, and remaining owner actions. Distinguish local audits from deployed crawl/index verification. Never promise rankings, indexing, traffic, or perfect scores.
+
+Use current primary guidance when requirements are uncertain: [Google's developer SEO guide](https://developers.google.com/search/docs/fundamentals/get-started-developers), [SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), and the [Open Graph protocol](https://ogp.me/). This section does not waive the shared test-first approval cycle or authorize external submissions, deployment, or changes outside frontend ownership.
+
 ## Test-first and handoff duties
 
 1. Define observable user behavior from requirements and the approved interface. Map cases to STEP/AC/TC identifiers.
-2. Select relevant interaction, loading, empty/error, responsive, and accessibility cases. Avoid irrelevant checklist tests.
+2. Select relevant interaction, loading, empty/error, responsive, accessibility, and marketing-site SEO cases. Avoid irrelevant checklist tests.
 3. Write tests first. Identify mocked contracts and behavior not proven by them. Run focused cases and classify initial failures accurately.
 4. Send exact commands, test names, results, failure reasons, coverage limits, and files to the orchestrator. Resolve test-review findings and wait for your step's user approval.
 5. Implement the smallest approved UI change using clear names, explicit data flow, and useful comments for non-obvious dependencies.
