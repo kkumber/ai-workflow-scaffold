@@ -15,13 +15,14 @@ lib/
 tests/
   scaffold.test.cjs                <-- isolated subprocess/filesystem tests of setup
   updates.test.cjs                 <-- versioned update/resolve and metadata safety cases
+  codex-agents.test.cjs            <-- Codex role fields and legacy-layout migration
 AGENTS.md                         <-- orchestrator, shared constraints, test-first gate
 PROJECT.md                        <-- current context and adoption fields
 ARCHITECTURE.md                    <-- this navigation and ownership guide
-agents/
-  backend.md                      <-- backend behavior and test ownership
-  frontend.md                     <-- UI behavior, presentation, and test ownership
-  reviewer.md                     <-- read-only test and implementation review
+.codex/agents/
+  backend.toml                    <-- backend role, medium reasoning, inherited model
+  frontend.toml                   <-- frontend/SEO role, medium reasoning, inherited model
+  reviewer.toml                   <-- read-only review role, high reasoning, inherited model
 tasks/
   README.md                       <-- adoption, execution, and resume guide
   _template/
@@ -35,7 +36,7 @@ tasks/
 - Start at [AGENTS.md](AGENTS.md). Read [PROJECT.md](PROJECT.md) for concrete project constraints and consult this map to find relevant files.
 - [README.md](README.md) explains GitHub npx setup and updates; [package.json](package.json) exposes [the CLI](bin/ai-workflow-scaffold.cjs) and selects the payload. [Shared file handling](lib/scaffold-files.cjs) supplies the eleven-document allowlist and path checks; [the update engine](lib/scaffold-updates.cjs) records upstream text, compares current/new content, uses Git for clean two-sided merges, and stages conflicts for explicit resolution. Initial setup preserves custom files and marks unknown originals honestly. Reruns use receiving-project `.ai-workflow-scaffold/state.json`; incoming review files and an exclusive lock live in the same metadata directory. That state is generated at runtime and is not a source-package artifact.
 - Consumer copies omit package metadata, CLI/lib/tests, and source task history; only eleven reusable documents plus their tracking state are created. The package excludes repository-local TASK-* history: only tasks/README.md and tasks/_template/*.md are distributed from tasks. Keep the receiving application's manifest, adapt the root README, preserve active update tracking through cleanup, and remove source-tool map entries/references when not copied.
-- All agents first read every project-owned Markdown file as required by AGENTS.md, then use the first-use setup protocol if applicable. Only the orchestrator adapts guidelines. Use [backend](agents/backend.md) or [frontend](agents/frontend.md) responsibilities only for affected work. [Reviewer](agents/reviewer.md) instructions govern read-only evaluation of cases and changes.
+- Codex agents first read every project-owned Markdown file and the complete .codex/agents/*.toml configurations as required by AGENTS.md, then use first-use setup if applicable. Only the orchestrator adapts guidelines. Use [backend](.codex/agents/backend.toml) or [frontend](.codex/agents/frontend.toml) only for affected work; [reviewer](.codex/agents/reviewer.toml) instructions govern read-only review. Standalone roles omit model/provider/permission overrides and set only the requested per-role reasoning.
 - [tasks/README.md](tasks/README.md) explains copying [plans.md](tasks/_template/plans.md), [todo.md](tasks/_template/todo.md), and [done.md](tasks/_template/done.md) into one task folder.
 - Active plans define scope and approved expectations. Todo entries reference the plan; done entries preserve completed IDs and actual evidence. No separate test-report store or approval service exists.
 - Repository-local task folders are maintenance history, not reusable forms or approval for a receiving project. Keep that history in the source checkout; it is intentionally absent from the distributed workflow map and package.
@@ -50,7 +51,9 @@ For a blank project, record the observed empty application areas and unresolved 
 
 The orchestrator owns workflow documents, project/map maintenance, and task ledgers. Backend and frontend own application files according to PROJECT.md and each active plan. Reviewer owns no editable paths. Shared application contracts and configuration receive one named owner per affected file in the plan; cross-role changes use sequential handoffs.
 
-The Markdown task forms define workflow records; the CLI provides local initialization, tracked updates, and conflict acknowledgment through versioned state. It performs no remote fetches, project application operations, or deployments. There are no established application routes, database schemas, shared application runtime types, or executable agent registrations in this template.
+The Markdown task forms define workflow records; the CLI provides local initialization, tracked updates, and conflict acknowledgment through versioned state. It performs no remote fetches, application operations, or deployments. There are no established receiving-application routes, database schemas, or shared application runtime types. Codex role definitions are described below.
+
+The three standalone Codex TOML files are project-scoped agent definitions, discovered by supported Codex clients. Existing tracked Markdown-role layouts are fixed compatibility inputs: the update engine validates that exact old allowlist, saves pre-codex-agents-state.json under receiving-project update metadata, retains unchanged guide baselines, and stages unknown-baseline TOML replacements. Old role files and pending artifacts are preserved for manual integration; normal new-layout updates follow after resolution. No personal/global/main Codex config is changed.
 
 ## Tests and commands
 

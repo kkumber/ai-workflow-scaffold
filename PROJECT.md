@@ -2,13 +2,15 @@
 
 ## Current template repository
 
-This repository supplies portable Markdown instructions for an orchestrator, backend, frontend, and read-only reviewer. Its users are project owners and AI agents adopting a test-first approval workflow. This source repository's maintenance task history is intentionally excluded from the package and receiving-project copies.
+This repository supplies Codex-specific project guidance and standalone backend, frontend, and read-only reviewer configurations. Its users are project owners and Codex agents adopting a test-first approval workflow. The roles live in [.codex/agents/backend.toml](.codex/agents/backend.toml), [.codex/agents/frontend.toml](.codex/agents/frontend.toml), and [.codex/agents/reviewer.toml](.codex/agents/reviewer.toml); backend/frontend reasoning is medium and reviewer high. No role sets a model, so the user's Codex session/default model choice remains in control. This source repository's maintenance history is excluded from package and receiving-project copies.
 
-This is a documentation template, not a configured application or test platform. No application stack, automated test runner, runtime API, database, or deployment target is established by these files. Navigation is in [ARCHITECTURE.md](ARCHITECTURE.md); adoption instructions are in [tasks/README.md](tasks/README.md).
+This is a Codex workflow scaffold and its delivery tool, not a configured receiving application. It establishes no receiving-application stack, test platform, runtime API, database, or deployment target. Navigation is in [ARCHITECTURE.md](ARCHITECTURE.md); adoption instructions are in [tasks/README.md](tasks/README.md).
 
 [package.json](package.json) defines the `ai-workflow-scaffold` package for GitHub installation. Its npx command, [bin/ai-workflow-scaffold.cjs](bin/ai-workflow-scaffold.cjs), initializes missing reusable guidance and upstream tracking, then uses managed updates on reruns. Shared allowlist/path handling lives in [lib/scaffold-files.cjs](lib/scaffold-files.cjs); [lib/scaffold-updates.cjs](lib/scaffold-updates.cjs) owns state, clean merges, staged conflicts, and explicit resolution. [README.md](README.md) covers setup, legacy migration, updates, and project-specific README adaptation. Requirements: Node.js >=20, npm/npx, Git for GitHub fetching and two-sided text merges. `npm test` runs [setup tests](tests/scaffold.test.cjs) and [update tests](tests/updates.test.cjs) with Node's built-in runner; it tests the tool, not the receiving application. Keep `.ai-workflow-scaffold/state.json` and pending review state with adopted guidance while managed updates are used. There are no install hooks or npm runtime dependencies. During adoption, keep the receiving project's own manifest and customized README; remove source-tool paths/history references when not copied. Distribution metadata does not establish an application stack or verified receiving-project commands.
 
 The orchestrator owns these coordination documents. Backend/frontend application paths are not assigned here because no application paths have been verified. Do not infer them from example directories. The introduction above describes the scaffold source only; during adoption, change these paragraphs to describe the receiving project. Preserve reusable sections and follow AGENTS.md when removing obsolete setup-only content.
+
+The [Codex role/migration tests](tests/codex-agents.test.cjs) join the setup/update suites under npm test. The tool reads/writes agent configurations as UTF-8 text; full TOML parsing/schema inspection is a direct artifact check, not a Python runtime dependency. The legacy Markdown-role allowlist is accepted only for controlled state migration; old receiver files remain available for manual integration and backup before cleanup.
 
 ## Workflow setup record
 
@@ -21,7 +23,7 @@ Allowed values: `template`, `in progress`, `ready`. This scaffold source intenti
 | Configured project identity | [TODO: receiving project's observed name/purpose and relative workspace target; avoid machine-specific absolute paths] |
 | Setup owner | Orchestrator |
 | Evidence inspected | [TODO: actual manifest, configuration, instruction, and entry-point paths with observations] |
-| Markdown orientation | [TODO: project-owned files read; exclusions and any reading blockers] |
+| Guidance orientation | [TODO: project-owned Markdown and .codex/agents/*.toml read; exclusions and any reading blockers] |
 | Guideline files adapted | [TODO: exact paths and project-specific changes; preserve shared rules] |
 | Setup cleanup | [TODO: exact removed wording/sections/files/folders and reasons, inspected references, retained uncertain items, or None with reason; record removals before deletion and verification afterward] |
 | Verification performed | [TODO: actual path/link/consistency checks and results] |

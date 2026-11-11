@@ -1,8 +1,18 @@
-# AI Workflow Scaffold
+# Codex Workflow Scaffold
 
-Portable Markdown guidance for an orchestrator, backend owner, frontend owner, and read-only reviewer. It provides project setup records, role boundaries, reusable task forms, and a test-first user approval checkpoint before each application implementation step.
+Project guidance and standalone Codex agent configurations for an orchestrator, backend owner, frontend owner, and read-only reviewer. It provides setup records, role boundaries, reusable task forms, and a test-first user approval checkpoint before each application implementation step.
 
 This repository is the reusable scaffold source. In a receiving project, this README becomes editable project documentation: adapt it to that project's actual purpose, setup, and commands using the instructions below.
+
+## Codex agents and model selection
+
+| Role | Project file | Reasoning effort |
+|---|---|---|
+| Backend | [.codex/agents/backend.toml](.codex/agents/backend.toml) | medium |
+| Frontend | [.codex/agents/frontend.toml](.codex/agents/frontend.toml) | medium |
+| Reviewer | [.codex/agents/reviewer.toml](.codex/agents/reviewer.toml) | high |
+
+Each file supplies name, description, reasoning effort, and the full role instructions. No file sets `model`: continue choosing your model in Codex desktop; these roles retain Codex's parent/default model resolution. No personal settings or project `.codex/config.toml` are created or rewritten. Custom roles inherit parent permissions; the reviewer's read-only constraint is enforced through its instructions, not a separate sandbox override. Use a Codex client that supports the documented standalone project-agent format. See the [official Codex subagent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
 ## Installation from GitHub
 
@@ -63,7 +73,7 @@ Use the reported canonical document path; for a lowercase root `readme.md`, the 
 
 Keep `.ai-workflow-scaffold/state.json` with the project-owned guidance, normally in version control, and retain it during first-use cleanup. It stores upstream templates, selected version/content identities, and pending upstream text, not backups of your customized documents. Removing it loses merge history. A lock prevents overlapping updater runs; if a crash leaves a lock, confirm no updater is running before removing the reported lock file. Each existing document and state file is replaced through a temporary file and rename, but an IO interruption can still leave some whole-file updates applied before state is saved. Fix the IO problem and retry. If the retry reports an unrecognized incoming artifact written before the state save failed, preserve and review it, move that reported artifact aside, then rerun; do not reset state or discard unreviewed project content. Updates do not provide a filesystem-wide transaction or semantic review of merged prose.
 
-For a project installed with the old copy-only command, run normal initialization once to start tracking. Existing custom files are preserved with unknown originals; the next update stages them for one-time manual integration and resolution. Missing files are copied during this initial adoption, so review any intentional legacy deletions first. `update` without state stops and explains initialization; it never guesses a historical baseline.
+For a project installed with the old copy-only command, run normal initialization once to start tracking. Existing custom files are preserved with unknown originals; the next update stages them for one-time manual integration and resolution. Missing files are copied during this initial adoption, so review intentional legacy deletions and old `agents/*.md` customizations first. Integrate applicable old role instructions into the new TOML rather than assuming defaults imported them. `update` without state stops and explains initialization; it never guesses a historical baseline.
 
 npx uses the package revision you request. To select a reviewed new revision explicitly, replace `COMMIT_SHA` with its full commit hash:
 
@@ -73,13 +83,27 @@ npx github:kkumber/ai-workflow-scaffold#COMMIT_SHA update
 
 A pin to an older commit intentionally keeps that older revision. The CLI itself does not fetch a newer revision or publish changes.
 
+## Migrate the previous Markdown roles
+
+For a tracked project using `agents/backend.md`, `agents/frontend.md`, and `agents/reviewer.md`, run the new revision's `update` command. It recognizes that exact previous layout, saves the original tracking bytes as `.ai-workflow-scaffold/pre-codex-agents-state.json`, and stages the three new templates under `.ai-workflow-scaffold/incoming/.codex/agents/`. Existing old roles, pending old review artifacts, and any existing target TOML files remain untouched. A differing or linked migration backup blocks changes rather than being overwritten.
+
+Review the staged templates and old custom instructions, create or merge the actual `.codex/agents/*.toml` files, and validate the TOML. Keep the model unset to retain your session/default selection and keep the requested role efforts unless you intentionally change them. Then acknowledge each reviewed role:
+
+```sh
+npx github:kkumber/ai-workflow-scaffold resolve .codex/agents/backend.toml
+npx github:kkumber/ai-workflow-scaffold resolve .codex/agents/frontend.toml
+npx github:kkumber/ai-workflow-scaffold resolve .codex/agents/reviewer.toml
+```
+
+This is a one-time manual format migration, not a guessed conversion of customized Markdown. Resolve records the staged upstream baseline and does not validate custom TOML semantics. Keep the state backup while needed for review/recovery; remove obsolete old role files only after confirming their useful content was integrated and references were updated, under the normal cleanup rule. Later updates merge tracked TOML using the same preservation/conflict behavior. Mixed or unknown state layouts reject without writes; older runtimes may safely reject the new layout rather than downgrade it.
+
 ## Integrate the workflow
 
 1. Read the receiving project's existing instructions and project-owned Markdown before making changes. Read this package's supplied guidance as the setup reference.
-2. Run the npx command above to copy `AGENTS.md`, `PROJECT.md`, `ARCHITECTURE.md`, `agents/*.md`, `tasks/README.md`, `tasks/_template/*.md`, and a root README into matching project-owned paths. It creates missing directories and copies only missing files; it does not copy source `tasks/TASK-*` history. For manual adoption, copy that same file set from an installed package or checkout after checking destinations.
+2. Run the npx command above to initialize `AGENTS.md`, `PROJECT.md`, `ARCHITECTURE.md`, `.codex/agents/*.toml`, `tasks/README.md`, `tasks/_template/*.md`, and a root README in matching project-owned paths. This is eight Markdown guides/forms and three Codex role files, plus update tracking. Initialization creates missing directories and copies only missing files; it excludes source `tasks/TASK-*` history and the old Markdown roles. Manual adoption uses the same file set after checking destinations.
 3. On initialization, review preserved custom files and merge relevant workflow guidance manually or with the orchestrator. Their original upstream content is unknown; managed updates need the one-time integration described above. The command does not personalize project content. A single existing root README with any casing, including `readme.md`, is retained without adding another; multiple root README variants are rejected as ambiguous. Keep useful project content and installation guidance.
 4. Keep the receiving project's own `package.json`; the scaffold's manifest is distribution metadata, not an application manifest to copy. Do not edit personalized guidance inside `node_modules`, where reinstalls can replace it.
-5. Make sure your agent host reads the project-owned `AGENTS.md`. Markdown role files describe duties; they do not register executable agents or guarantee that a host automatically loads instructions from dependencies.
+5. Make sure Codex reads the project-owned `AGENTS.md` and discovers the standalone files in `.codex/agents/`; dependency-only copies are not project agent configuration. Request the backend, frontend, or reviewer by its configured name. No main config or model override is required by this scaffold.
 6. Ask the orchestrator to perform first-use setup under [AGENTS.md](AGENTS.md). It inspects the project, adapts project-specific wording, cleans up obsolete setup material, and records evidence and status in [PROJECT.md](PROJECT.md). Preserve shared policies and useful project content; remove references to source-only files that were not copied.
 
 Example setup request:
@@ -108,6 +132,6 @@ Before marking a receiving project's setup ready, follow the cleanup step in AGE
 
 ## Maintain the scaffold source
 
-When maintaining this repository itself, leave its setup status as `template` and future task forms unfilled; retain these reusable setup instructions. Inspect package contents with `npm pack --dry-run` before sharing a revision. Both the package payload and CLI copies exclude this repository's TASK-* history. Only tasks/README.md and tasks/_template/*.md are included from tasks; repository-local task records remain here as maintenance history.
+When maintaining this repository itself, leave its setup status as `template` and future task forms unfilled; retain these reusable setup instructions. Inspect package contents with `npm pack --dry-run` before sharing a revision. The package explicitly includes `.codex/agents/*.toml`, excludes old `agents/*.md`, and excludes repository TASK-* history. Only tasks/README.md and tasks/_template/*.md are included from tasks; repository-local task records remain here as maintenance history.
 
 Run `npm test` to exercise the setup command using Node's built-in test runner and isolated temporary projects. Link tests require permission to create filesystem links, including file symlinks on Windows. These are scaffold-tool tests, not a receiving application's test system. No database or deployment is supplied. The package currently declares `UNLICENSED`; no open-source license grant is included.

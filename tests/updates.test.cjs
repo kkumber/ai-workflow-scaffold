@@ -11,7 +11,7 @@ const statePath = '.ai-workflow-scaffold/state.json';
 const lockPath = '.ai-workflow-scaffold/update.lock';
 const reusableFiles = [
   'README.md', 'AGENTS.md', 'PROJECT.md', 'ARCHITECTURE.md',
-  'agents/backend.md', 'agents/frontend.md', 'agents/reviewer.md',
+  '.codex/agents/backend.toml', '.codex/agents/frontend.toml', '.codex/agents/reviewer.toml',
   'tasks/README.md', 'tasks/_template/plans.md', 'tasks/_template/todo.md', 'tasks/_template/done.md',
 ];
 

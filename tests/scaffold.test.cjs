@@ -12,9 +12,9 @@ const reusableFiles = [
   'AGENTS.md',
   'PROJECT.md',
   'ARCHITECTURE.md',
-  'agents/backend.md',
-  'agents/frontend.md',
-  'agents/reviewer.md',
+  '.codex/agents/backend.toml',
+  '.codex/agents/frontend.toml',
+  '.codex/agents/reviewer.toml',
   'tasks/README.md',
   'tasks/_template/plans.md',
   'tasks/_template/todo.md',
@@ -93,9 +93,9 @@ test('TC-05 / AC-06: existing guidance and application files survive while missi
     'AGENTS.md': 'Existing project instructions\n',
     'README.md': 'Existing application setup\n',
     'package.json': '{"name":"receiving-project","private":true}\n',
-    'agents/backend.md': 'Existing backend policy\n',
+    '.codex/agents/backend.toml': 'Existing backend policy\n',
   };
-  fs.mkdirSync(path.join(workspace.projectRoot, 'agents'));
+  fs.mkdirSync(path.join(workspace.projectRoot, '.codex', 'agents'), { recursive: true });
   for (const [relativePath, content] of Object.entries(existingFiles)) {
     fs.writeFileSync(path.join(workspace.projectRoot, relativePath), content);
   }
@@ -110,7 +110,7 @@ test('TC-05 / AC-06: existing guidance and application files survive while missi
   assert.match(result.stdout, /preserv|skip|merge|exist/i);
   assert.match(result.stdout, /AGENTS\.md/);
   assert.match(result.stdout, /README\.md/);
-  assert.match(result.stdout, /agents[\\/]backend\.md/);
+  assert.match(result.stdout, /\.codex[\\/]agents[\\/]backend\.toml/);
 });
 
 test('TC-06 / AC-06: a lowercase root readme is preserved without creating a second README', function (testContext) {
@@ -168,13 +168,15 @@ test('TC-09 / AC-07: a linked parent is rejected without writing into or outside
   if (process.platform === 'win32') {
     linkType = 'junction';
   }
-  fs.symlinkSync(outsideRoot, path.join(workspace.projectRoot, 'agents'), linkType);
+  fs.mkdirSync(path.join(workspace.projectRoot, '.codex'));
+  fs.symlinkSync(outsideRoot, path.join(workspace.projectRoot, '.codex', 'agents'), linkType);
 
   const result = runCommand(workspace.projectRoot);
 
   assertRejected(result, /agents/i);
-  assert.deepEqual(fs.readdirSync(workspace.projectRoot), ['agents']);
-  assert.equal(fs.lstatSync(path.join(workspace.projectRoot, 'agents')).isSymbolicLink(), true);
+  assert.deepEqual(fs.readdirSync(workspace.projectRoot), ['.codex']);
+  assert.deepEqual(fs.readdirSync(path.join(workspace.projectRoot, '.codex')), ['agents']);
+  assert.equal(fs.lstatSync(path.join(workspace.projectRoot, '.codex', 'agents')).isSymbolicLink(), true);
   assert.deepEqual(fs.readdirSync(outsideRoot), ['sentinel.txt']);
   assert.equal(fs.readFileSync(path.join(outsideRoot, 'sentinel.txt'), 'utf8'), 'Outside content\n');
 });
