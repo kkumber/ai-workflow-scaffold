@@ -36,7 +36,7 @@ Retain this section and remove unused expanded form instructions when copying. E
 - Check/review suitability: [TODO: selected workflow/revision/mode, actual findings/resolutions; test-first includes test-quality review, direct work reviews meaningful focused coverage]
 - Checkpoint: [TODO: required for test-first; summary, evidence references and explicit approval question. Direct work: no separate checkpoint, state basis once]
 - User authorization/applicable approval: [TODO: requested scope for direct work; actual decision/revision for test-first, pending until reply. Reclassify material discoveries]
-- Final review/acceptance: [TODO: mode, findings/dispositions, AC-to-evidence mapping, document/map changes and remaining limits]
+- Final review/acceptance: [TODO: mode, findings/dispositions, AC-to-evidence mapping, document/map changes and remaining limits; remove confirmed task-owned temporary artifacts under AGENTS.md, retain required evidence]
 - Resume: [TODO: last valid stage, approval applicability, blocker and precise next action; record changed facts only]
 
 Keep actual results here; todo/done reference them. Apply every relevant root workflow requirement. Do not duplicate case tables, logs or checkpoint text in other records or chat.

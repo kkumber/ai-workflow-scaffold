@@ -1,5 +1,12 @@
 # TASK-007: Proportionate implementation and verification
 
+## Temporary-artifact cleanup clarification
+
+- Goal/authorization/workflow: user requests shared cleanup guidance for saved design references and bug/debug files; direct documentation change, root owner. Applies across roles/skills, not a new skill.
+- Scope/approach/checks: AGENTS.md adds task-owned temporary-artifact lifecycle, safe last-use/closure cleanup and preservation of originals, reusable assets/tests, required evidence, unresolved reproductions and active state. tasks/_template/plans.md adds the cleanup reminder to existing review field; this entry records evidence. No existing artifacts deleted. Focused content/whitespace review; no builds/suites.
+- Evidence/review/limits: inline Python direct check from repository root verified cleanup timing, exact ownership/path safeguards, retention exceptions and plan reminder; `git diff --check` passed with LF/CRLF notices only. Root self-review checked cross-role scope, interrupted-work retention, no blanket deletions and preservation of required evidence/tool state; no actionable findings. No builds/suites or runtime deletion tests for prose; no files cleaned under this rule during this change.
+- Status/next: done; None.
+
 ## Approval-alignment clarification
 
 - Goal/authorization/workflow: user's instruction that approval follow the TDD policy; direct documentation clarification, root owner.
