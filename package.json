@@ -1,7 +1,7 @@
 {
   "name": "ai-workflow-scaffold",
   "version": "0.3.0",
-  "description": "Codex project agents and workflow with inherited model selection, managed updates, and test-first approval checkpoints.",
+  "description": "Codex project agents with inherited model selection, managed updates, risk-based TDD checkpoints, and focused verification.",
   "license": "UNLICENSED",
   "bin": {
     "ai-workflow-scaffold": "bin/ai-workflow-scaffold.cjs"

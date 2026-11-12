@@ -7,7 +7,7 @@ No completed entries. Use this block only when closure conditions are met; IDs/p
 
 ## [TODO: preserved WORK ID]
 
-- Step / criteria / cases; approval: [TODO: IDs and plan decision/revision reference]
+- Step / workflow / criteria / cases; authorization: [TODO: IDs, plan classification and requested scope or required approval/revision reference]
 - Outcome: [TODO: completed behavior and material decisions/deviations]
 - Evidence: [TODO: link canonical files/flow, exact verification results, review mode/dispositions and relevant map/setup updates; do not repeat tables]
 - Remaining limits/actions: [TODO: material skipped checks, accepted limits, unapplied operations or None]

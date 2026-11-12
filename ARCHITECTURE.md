@@ -16,7 +16,7 @@ tests/
   scaffold.test.cjs                <-- isolated subprocess/filesystem tests of setup
   updates.test.cjs                 <-- versioned update/resolve and metadata safety cases
   codex-agents.test.cjs            <-- Codex role fields and legacy-layout migration
-AGENTS.md                         <-- orchestrator, shared constraints, test-first gate
+AGENTS.md                         <-- orchestrator, risk classification, applicable test-first gate
 PROJECT.md                        <-- current context and adoption fields
 ARCHITECTURE.md                    <-- this navigation and ownership guide
 .codex/agents/
@@ -38,7 +38,7 @@ tasks/
 - Consumer copies omit package metadata, CLI/lib/tests, and source task history; only eleven reusable documents plus their tracking state are created. The package excludes repository-local TASK-* history: only tasks/README.md and tasks/_template/*.md are distributed from tasks. Keep the receiving application's manifest, adapt the root README, preserve active update tracking through cleanup, and remove source-tool map entries/references when not copied.
 - Codex agents follow scoped context in AGENTS.md: applicable shared/local rules, project constraints, active task and assigned role. Load setup, task procedures, marketing SEO and historical evidence only when relevant. Only the orchestrator adapts guidelines. Use [backend](.codex/agents/backend.toml) or [frontend](.codex/agents/frontend.toml) only for affected work; [reviewer](.codex/agents/reviewer.toml) instructions govern read-only review. Standalone roles omit model/provider/permission overrides and set only the requested per-role reasoning.
 - [tasks/README.md](tasks/README.md) explains copying [plans.md](tasks/_template/plans.md), [todo.md](tasks/_template/todo.md), and [done.md](tasks/_template/done.md) into one task folder.
-- Active plans define scope and approved expectations. Todo entries reference the plan; done entries preserve completed IDs and actual evidence. No separate test-report store or approval service exists.
+- Active plans define scope, workflow/risk rationale, selected checks and applicable approval. Compact direct low-risk work keeps evidence/status in one plan entry; test-first or complex work uses separate todo/done ledgers. Major/material-flow/high-risk work retains the root test-first checkpoint; direct work retains verification/review without mandatory tests-first/approval stages. No separate test-report store or approval service exists.
 - Repository-local task folders are maintenance history, not reusable forms or approval for a receiving project. Keep that history in the source checkout; it is intentionally absent from the distributed workflow map and package.
 
 ## First-use mapping

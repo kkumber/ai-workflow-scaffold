@@ -46,7 +46,7 @@ The orchestrator classifies requests, establishes observed behavior, writes plan
 - The reviewer is read-only: no code fixes, task-record edits, or project-file edits. Findings return to the owning specialist; the orchestrator records review results.
 - Give delegates a focused handoff: goal, assigned step/files, stable interfaces, applicable decision/approval revision, acceptance criteria, commands and known limits. Link canonical evidence instead of copying the whole chat or every task record. Prefer scoped context over full-history inheritance when supported; allow agents to retrieve needed dependencies. Keep independent review for material changes; avoid extra agents for trivial work.
 - Assign one owner to every affected shared file in the plan, including shared types, dependency manifests, lockfiles, and build configuration. Do not edit the same file concurrently.
-- Sequence backend contracts before dependent frontend implementation. Parallel work is allowed only with stable contracts and non-overlapping ownership. Each coherent step needs its own checkpoint; one role's approval does not approve another step.
+- Sequence backend contracts before dependent frontend implementation. Parallel work is allowed only with stable contracts and non-overlapping ownership. Each test-first step needs its own checkpoint; one role's approval does not approve another step. Direct low-risk work needs no separate checkpoint within the user's authorized scope.
 
 ## Readable, simple code
 
@@ -67,14 +67,24 @@ The orchestrator classifies requests, establishes observed behavior, writes plan
 ## Plan before application work
 
 1. Inspect relevant requirements, code, interfaces, and tests before asserting current behavior.
-2. Select one coherent feature step and define observable acceptance criteria. Resolve material unknowns about expected behavior before implementing it.
-3. Create a task folder using the [forms](tasks/_template/plans.md). Use its short form for small, bounded changes; expand only sections warranted by the work. Write plans.md before deriving todo.md. Do not create fictional completed entries.
-4. Record exact existing/proposed files, ownership, interfaces/data flow, ordered steps, dependencies, cases, risks, verification, and resume context. Expand schema, migration, concurrency, and rollout details only when affected.
+2. Classify the change under the policy below; record its risk rationale and selected verification. Select one coherent step and define observable acceptance criteria. Resolve material unknowns about expected behavior before implementing it.
+3. Use the [forms](tasks/_template/plans.md). Small direct low-risk work may use one compact entry in an existing relevant task's plans.md, or a new task folder containing plans.md alone; separate todo.md/done.md are optional for that workflow. Keep outcome, state, evidence and next action there. Test-first or complex/multi-step work retains plans.md, todo.md and done.md; write the plan first. Never fabricate completion or delete existing history to change formats.
+4. Record exact affected files/owner, requested outcome, workflow/risk rationale, steps, relevant checks/results and resume state. Expand contracts/data flow, case matrices, schema, migration, concurrency and rollout only when affected. Direct work needs no unused test matrix, fictional failing baseline or repeated Not applicable sections.
 5. Use stable STEP-01, AC-01, TC-01, and work-entry IDs. Checklists reference plan requirements instead of duplicating them.
 
-Planning-only requests do not authorize implementation. Routine planning and test preparation need no additional approval ceremony, but the application checkpoint below is mandatory unless an applicable user instruction explicitly changes it.
+Planning-only requests do not authorize implementation. Routine planning and test preparation need no additional approval ceremony. The additional test-first checkpoint applies only to the test-first workflow below; direct low-risk implementation proceeds within the user's requested scope.
+
+## Classify the change and select verification
+
+- **Test-first:** require TDD and the test-first user checkpoint for major features, new or materially changed user flows, and high-risk behavior such as authorization, payments, data integrity, migrations, concurrency or comparable consequences. Follow the full cycle below for each such step.
+- **Direct:** for small, bounded low-risk work such as copy, styling, simple frontend adjustments or straightforward functions with clear behavior, inspect relevant code/dependencies/existing tests, implement directly within the user's requested scope, then perform the smallest meaningful verification and focused review. New automated tests and a separate test-first checkpoint are not mandatory when inspection, a direct/manual check or an existing focused check adequately covers the change. Record why that coverage is suitable; prefer focused regression tests for bug fixes.
+- Judge risk by behavior, dependencies and consequences, not line count, confidence in a predicted result, or frontend/backend labels. A small function or static page can affect security, shared behavior, accessibility or an important flow. If inspection or implementation reveals greater risk, stop affected work, reclassify and complete the required test-first preparation/checkpoint before further affected implementation. Existing partial work is disclosed, never presented as a pre-implementation failing baseline.
+- Do not routinely run production builds, full test suites, broad lint/type checks, browser audits or repeated expensive commands. Choose focused checks first; broaden only for relevant dependencies, failures, uncertainty, explicit project requirements or the user's request. Rerun after a relevant change/fix or new concern, not merely because another phase begins. A command's duration alone does not show its model/token cost; avoid unnecessary logs, reasoning and repeated tool cycles too.
+- State actual checks/results and material limits concisely. Omitting an irrelevant expensive check needs no separate permission. A required check that cannot be completed still requires explicit acceptance of reduced verification; never report omitted or blocked checks as passed. Preserve all code-quality, reuse, framework, ownership, security and applicable review requirements in both workflows.
 
 ## Test-first cycle: repeat for each coherent step
+
+This cycle applies to steps classified test-first. The direct workflow uses the common implementation, verification, review and evidence requirements without mandatory tests-first, failing baseline or pre-implementation approval stages.
 
 ### 1. Define and write tests
 
@@ -131,14 +141,13 @@ Move completed entries from todo.md to done.md with the same IDs only when appro
 ## Exceptions and proportionate verification
 
 - No established test system: inspect existing options, propose the smallest suitable setup and consequences, and resolve the decision before adding infrastructure. Never silently replace requested automated tests with manual checks.
-- Manual checks: use only when appropriate to the task or explicitly accepted by the user for behavior that cannot be automated in the current setup. Define reproducible steps and expected results before implementation; retain the checkpoint.
-- Documentation/non-behavior deliverables: do not invent meaningless automated tests. Define direct checks for paths, consistency, required fields, and ownership. Report pre-edit observations and checks only possible afterward; obtain checkpoint approval before deliverable edits unless the user directly requested the specific documentation edits or the narrow first-use setup permission applies. Task plans and evidence records remain allowed preparation before approval; do not create recursive approval gates for maintaining the checkpoint itself. Do not claim tests ran against nonexistent documents. These exceptions do not waive application checkpoints.
-- Blocked verification: record the blocker, confidence limit, and next action. Reduced verification needs explicit user acceptance and must remain visible in the final report. Accepted limits do not turn an unrun check into a pass.
-- Choose checks by risk. Do not automatically run full suites, broad static analysis, production builds, or extensive visual checks for every small task. Broaden only for evidence, changed risk, or user request. Use focused tests for meaningful behavior changes.
+- Manual/direct checks: appropriate for low-risk work when they meaningfully cover the change; define the action and expected result, then record the actual outcome. For test-first work, retain the checkpoint and obtain acceptance when manual checks replace required automation.
+- Documentation/non-behavior deliverables: use direct checks for paths, consistency, required fields and ownership rather than meaningless tests. Specific user-requested edits and the narrow setup permission authorize direct documentation work; proposed policy/scope changes still need approval when the user requested review first. Report inspected observations and post-edit checks honestly. Task planning/evidence needs no recursive checkpoint. Documentation permission does not waive test-first classification of later application work.
+- Blocked required verification: record the blocker, confidence limit and next action; explicit user acceptance of reduced coverage must remain visible in the final report. This does not require approval for checks deemed irrelevant under the classification policy. Unrun checks never count as passes.
 
 ## Status and resuming
 
-Step states: `planned → tests in progress → awaiting user approval → implementation in progress → in review → done`. Also allow `blocked` and `cancelled`, each with a reason. A completed pre-implementation review stays within `tests in progress` until the checkpoint is ready; `in review` is the post-implementation stage. Overall task status reflects its active step; it is done only when every required criterion is satisfied and no blocking finding remains.
+Test-first states: `planned → tests in progress → awaiting user approval → implementation in progress → in review → done`. Direct states: `planned → implementation in progress → in review → done`. Record workflow/risk rationale; direct work does not invent a failed baseline or approval event. Both allow `blocked` and `cancelled` with reasons. Test-quality review stays in `tests in progress`; `in review` means post-implementation. The task is done only when every required criterion is satisfied and no blocking finding remains.
 
 Keep the last valid stage, dependencies, blocker, and precise next action. On resume, complete scoped orientation, check setup applicability, read the active records, verify that user approval applies to current expectations/tests, and inspect relevant changes if evidence might be stale. Revalidate affected tests after changes; reopen approval when expected behavior materially changes. Do not use context loss to bypass a checkpoint. Cancellation preserves the reason and any partial changes; it is not completion.
 
@@ -154,14 +163,16 @@ Conserve generated text, not implementation quality or verification. Length targ
 
 Use clear professional language. Progress updates usually need 1–2 sentences with a new finding, decision, blocker or next step; do not restate the plan or narrate routine tool calls. Honor host-required update frequency without repeating unchanged status.
 
-Final responses usually need 3–5 short bullets or a brief paragraph, generally under 150 words for routine work:
+Routine final responses usually need 1–3 short bullets or a brief paragraph, generally under 100 words. These are ceilings to guide brevity, not quotas to fill:
 
 - Outcome and any decision/deviation that affects the user.
 - Actual verification outcome and material skipped/blocked checks or remaining actions. Distinguish self-review, independent review and owner-reported evidence when relevant.
 - A link to the diff or canonical task evidence for the exact file inventory, commands/results, resolved findings and detailed flow. List individual files in chat only when the user requests them or they need attention; omit empty categories and irrelevant database/deployment boilerplate.
 
-Internal handoffs should give the result/findings, changed contract or files needing attention, actual checks/limits and next action, usually within 5 bullets. Link canonical requirements/results; do not reproduce the full task or narrative. Preserve exact identifiers, errors, severity and blockers; abbreviations must be unambiguous.
+Internal handoffs usually need 1–3 bullets: result/findings, actual checks/material limits, and next action if any. Link the canonical record; repeat contracts or individual files only when changed or needed for coordination. Preserve exact identifiers, errors, severity and blockers; abbreviations must be unambiguous. No handoff is needed between a single agent's routine phases unless facts must be preserved for resume.
 
-Task records should update changed facts only. Requirements/cases/approval/results stay canonical in plans.md; todo holds pending state, and done records completed IDs/outcomes with evidence references. Do not copy the same checkpoint or file/result table into all three records. Use compact rows and applicable fields rather than boilerplate for unaffected concerns. Avoid unnecessary helper scripts or generated reports when existing tools suffice; keep any needed code readable and verification meaningful.
+Task records should update changed facts only. For compact direct work, keep one canonical entry with outcome, rationale/files, actual checks/review/limits and status/next action. Where three ledgers are warranted, requirements/cases/approval/results stay in plans.md; todo holds pending state and done references completion evidence. Do not duplicate checkpoints or inventories. Consolidate record updates at meaningful transitions; do not rewrite whole documents for a status change.
+
+Generated code and tool-call payloads also consume output: do not echo code already written, regenerate unchanged files, print whole diffs or produce extra reports/helpers solely to prove routine work. Use targeted patches and existing checks where suitable; any necessary helper remains readable. Preserve complete implementation and material evidence. Omit routine boilerplate about unchanged settings, absent deployment/database work, empty findings/categories or hypothetical limitations unless relevant; never omit a real blocker, required acceptance or verification limit.
 
 Do not count reruns as distinct tests or call planned checks passed. Tests support covered behavior; they do not prove universal correctness or eliminate all AI errors.

@@ -1,6 +1,6 @@
 # Codex Workflow Scaffold
 
-Project guidance and standalone Codex agent configurations for an orchestrator, backend owner, frontend owner, and read-only reviewer. It provides setup records, role boundaries, reusable task forms, and a test-first user approval checkpoint before each application implementation step.
+Project guidance and standalone Codex agent configurations for an orchestrator, backend owner, frontend owner, and read-only reviewer. It provides setup records, role boundaries, reusable task forms, and risk-based implementation: TDD with user checkpoints for major features, material flows and high-risk behavior; direct implementation with focused verification for small low-risk changes.
 
 This repository is the reusable scaffold source. In a receiving project, this README becomes editable project documentation: adapt it to that project's actual purpose, setup, and commands using the instructions below.
 
@@ -124,7 +124,7 @@ Remove source-only distribution and maintenance wording only where it no longer 
 
 Start with [AGENTS.md](AGENTS.md), project context in [PROJECT.md](PROJECT.md), and the [architecture map](ARCHITECTURE.md). The [task guide](tasks/README.md) explains adoption, task creation, approval, execution, and resuming work.
 
-Each task uses [plans.md](tasks/_template/plans.md), [todo.md](tasks/_template/todo.md), and [done.md](tasks/_template/done.md). For application behavior, write and run tests, review initial results, obtain the user's explicit step approval, implement, verify, review, and record completion. Documentation setup uses the specific permissions and direct checks defined in AGENTS.md.
+Small direct low-risk work can use one [compact plan entry](tasks/_template/plans.md#compact-direct-work), with goal/risk/files, actual evidence/review and state. Test-first or complex work retains [plans.md](tasks/_template/plans.md), [todo.md](tasks/_template/todo.md) and [done.md](tasks/_template/done.md). Record workflow/risk rationale and selected checks under [AGENTS.md](AGENTS.md#classify-the-change-and-select-verification). Major features, new/material user flows and high-risk behavior require TDD, reviewed initial results and explicit step approval. Direct work proceeds under the user's requested scope with meaningful focused verification/review. Avoid automatic builds/full suites/broad audits; broaden for evidence, requirements or user requests.
 
 ## Finish setup and remove scaffolding
 

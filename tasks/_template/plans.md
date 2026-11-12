@@ -1,19 +1,29 @@
 # [TODO: TASK-NNN short title]
 
-This is a reusable form, not an active or approved task. Copy it using [the task guide](../README.md). Choose the short form below for small, bounded work, or the expanded sections for complex work; do not populate both. Example IDs are placeholders, not evidence. Fill relevant fields before execution. Brevity changes record format, never required planning, tests, approval or review.
+This is a reusable form, not an active or approved task. Use one form below: compact direct, short, or expanded. Remove unused template instructions when copying. Example IDs are not evidence. Record format never waives risk classification, code quality, applicable tests/approval, meaningful verification or review.
+
+## Compact direct work
+
+For a small bounded direct change, one entry in an existing relevant plan or a new plans.md is sufficient; separate todo/done are optional. Fill the first two bullets before editing, then add actual evidence/status. Expand only for a real dependency or risk; use the test-first forms if reclassified.
+
+- Goal / authorization / workflow: [TODO: requested outcome, direct risk rationale and one owner]
+- Scope / approach / selected verification: [TODO: exact affected files/actions, relevant dependencies, observable acceptance and focused check/expected outcome]
+- Evidence / review / limits: [TODO: actual command or reproducible inspection, result and review attribution; material limits only]
+- Status / next action: [TODO: actual stage; unfinished action or done]
 
 ## Short form: small, bounded tasks
 
 Retain this section and remove unused expanded form instructions when copying. Expand a concern when it affects correctness, contracts, security, migration/concurrency, recovery or rollout. Do not hide an unresolved requirement in a short record.
 
 - Task/status/owner/mode/revision/active step: [TODO; disclose self-review]
+- Workflow/risk rationale and selected checks: [TODO: direct low-risk or test-first; justify from behavior/dependencies, record focused checks and escalation triggers]
 - Requirement/user decision and setup reference: [TODO; link PROJECT.md, do not duplicate setup state]
 - Observed behavior → expected outcome; scope and material decisions: [TODO: evidence and reason]
 - Exact existing/proposed files, actions, purposes and one owner per shared file: [TODO: compact inventory]
 - STEP-01 / AC-01: [TODO: ordered actions, observable criterion, basis and dependencies]
 - Relevant contracts/data flow/risks: [TODO: concrete interfaces, boundaries and recovery if affected; otherwise one concise scope statement]
 
-| Case / AC / kind / level | Goal and requirement basis | Given → When → Then | Test location; initial expectation/reason; mocks/limits |
+| Case / AC / kind / level | Goal and requirement basis | Given → When → Then | Check/test location; initial expectation if test-first; mocks/limits |
 |---|---|---|---|
 | TC-01 / AC-01 / [TODO] | [TODO] | [TODO] | [TODO] |
 
@@ -21,9 +31,9 @@ Retain this section and remove unused expanded form instructions when copying. E
 |---|---|---|
 | [TODO] | [TODO] | Not run |
 
-- Test-quality review: [TODO: revision/mode, alignment/assertions/fixtures and missing cases, actual findings/resolutions; documentation uses applicable direct review]
-- Checkpoint: [TODO: step/revision, compact behavior/case-group/results/risks/scope summary and evidence references; explicit approval question]
-- Actual user decision and approved scope/revision: [TODO: pending until reply unless specific documentation authorization applies; renew for material changes]
+- Check/review suitability: [TODO: selected workflow/revision/mode, actual findings/resolutions; test-first includes test-quality review, direct work reviews meaningful focused coverage]
+- Checkpoint: [TODO: required for test-first; summary, evidence references and explicit approval question. Direct work: no separate checkpoint, state basis once]
+- User authorization/applicable approval: [TODO: requested scope for direct work; actual decision/revision for test-first, pending until reply. Reclassify material discoveries]
 - Final review/acceptance: [TODO: mode, findings/dispositions, AC-to-evidence mapping, document/map changes and remaining limits]
 - Resume: [TODO: last valid stage, approval applicability, blocker and precise next action; record changed facts only]
 
@@ -39,6 +49,8 @@ Use the following sections instead of the short form when the task warrants thei
 - Status: planned
 - Owner: [TODO: orchestrator]
 - Execution mode: [TODO: delegated or single-agent role phases; disclose self-review]
+- Workflow/risk rationale: [TODO: direct low-risk or test-first, behavior/dependency consequences; select per coherent step if mixed]
+- Selected verification and expansion triggers: [TODO: smallest meaningful checks; justify expensive checks only when relevant]
 - Requirements source: [TODO: canonical requirement references and user decisions]
 - Plan revision: [TODO: simple revision label, e.g. R1; increment on material changes]
 - Active step: [TODO: STEP ID]
@@ -71,19 +83,19 @@ Schema, existing data, migrations, concurrency, recovery, and rollout: [TODO: ex
 
 ## Steps, dependencies, and acceptance criteria
 
-Repeat the step and criterion rows as needed. Each step is one coherent behavior suitable for its own test-first checkpoint.
+Repeat rows as needed. Each coherent step has an explicit workflow classification; only test-first steps require a test-first checkpoint.
 
 | Step | Goal / ordered implementation actions | Owner | Prerequisites / handoff | Criteria |
 |---|---|---|---|---|
-| STEP-01 | [TODO: concrete actions after approval] | [TODO] | [TODO: stable interfaces, earlier steps] | AC-01 |
+| STEP-01 | [TODO: concrete actions; after approval when test-first] | [TODO] | [TODO: stable interfaces, earlier steps] | AC-01 |
 
 | Criterion | Observable requirement | Source / approved decision |
 |---|---|---|
 | AC-01 | [TODO: externally assessable outcome] | [TODO] |
 
-## Test matrix: before application changes
+## Verification cases: tests-first when required
 
-Expectations originate from requirements, not imagined implementation. Include only relevant cases. For manual cases, give reproducible steps and explain why that method is appropriate or record user acceptance of reduced automation.
+Expectations originate from requirements, not imagined implementation. For test-first steps define/write tests before application changes. For direct work select meaningful focused inspection, manual procedures or existing tests; new automated tests and an initial failing baseline are not mandatory. Include only relevant cases. Give reproducible manual actions/expected results and explain suitability; required automation replaced with reduced coverage needs explicit acceptance.
 
 ### TC-01
 
@@ -96,7 +108,7 @@ Expectations originate from requirements, not imagined implementation. Include o
 - Basis: [TODO: precise requirement or user decision]
 - Test file/location: [TODO: exact existing or proposed file; procedure location for manual checks]
 - Level: [TODO: unit, integration, component, end-to-end, or manual/direct inspection]
-- Initial expectation: [TODO: pass/fail and intended reason; not yet an actual result]
+- Initial expectation: [TODO for test-first: pass/fail and intended reason; direct work need not invent a failing baseline]
 - Mocks/limits: [TODO: contract assumptions and behavior not established]
 
 ## Commands and evidence
@@ -112,7 +124,7 @@ Initial result classifications: expected behavioral failure; existing-behavior p
 Focused regression strategy: [TODO: checks justified by risk].
 Skipped checks: [TODO: each reason; record explicit user acceptance if required verification is reduced].
 
-## Test-quality review
+## Test-quality review (test-first steps)
 
 - Step and case revision reviewed: [TODO]
 - Reviewer / mode: [TODO: independent or self-review]
@@ -121,7 +133,7 @@ Skipped checks: [TODO: each reason; record explicit user acceptance if required 
 - Missing cases and unsupported assumptions: [TODO]
 - Findings, owners, and resolutions: [TODO: do not claim review before it occurs]
 
-## User checkpoint: repeat for each step
+## User checkpoint: test-first steps only
 
 - Step / plan revision / case IDs: [TODO]
 - Status: [TODO: not presented, awaiting user approval, approved, changes requested]
@@ -135,7 +147,7 @@ Skipped checks: [TODO: each reason; record explicit user acceptance if required 
 - Approved scope/revision: [TODO: exact step and expectation revision; never infer blanket approval]
 - Feedback and changes since checkpoint: [TODO: renew checkpoint if material]
 
-Save evidence, update todo.md, and pause application changes while awaiting the user's reply. For documentation, disclose which checks are possible only after writing.
+For test-first steps save evidence, update todo.md and pause affected application changes until the user's reply. Direct low-risk work proceeds under the requested scope without this separate checkpoint; record that classification rather than inventing approval. Disclose documentation checks possible only after writing.
 
 ## Post-implementation review and acceptance
 

@@ -11,11 +11,13 @@ Own no editable files. Do not fix code, adapt guidelines, update task records, r
 
 ## Test-quality review
 
-Check requirement/AC coverage and explicit limits, meaningful observable assertions, fixtures/mocks that retain the tested behavior, correctly classified initial failures and investigation of already-passing new behavior. Check relevant boundary/error/permission/regression cases, proposed contract labels and dependencies, and absence of production edits before approval. Return blocking findings before the user checkpoint; reviewer approval never replaces user approval.
+First check the selected workflow, risk rationale and proportionality of verification against AGENTS.md. Do not demand TDD, a new test or a separate checkpoint solely because direct low-risk work changed application code. Reclassify major/material-flow/high-risk work incorrectly labeled low-risk. Appropriate direct checks are evidence, not a fabricated failing baseline. Do not require irrelevant builds/full suites/broad audits; required coverage and explicit project checks remain binding.
+
+For test-first steps, check requirement/AC coverage and explicit limits, meaningful observable assertions, fixtures/mocks that retain the tested behavior, correctly classified initial failures and investigation of already-passing new behavior. Check relevant boundary/error/permission/regression cases, proposed contract labels and dependencies, and absence of production edits before required approval. Return blocking findings before the user checkpoint; reviewer approval never replaces required user approval.
 
 ## Implementation review
 
-Compare approved expectations against actual behavior beyond passing tests: correctness/regressions, validation/authorization/data boundaries, contracts, ownership, reusable simple framework-native code, manually editable flow, comments, relevant tests and map updates. Confirm applicable approval and reopening of material deviations. Distinguish checks you ran from owner-reported evidence. Avoid unrelated scans or costly checks without reason. Re-review owner corrections; never fix them yourself.
+Compare requested expectations and applicable approved scope against actual behavior beyond passing tests: correctness/regressions, validation/authorization/data boundaries, contracts, ownership, reusable simple framework-native code, manually editable flow, comments, relevant checks and map updates. Confirm applicable approval, risk reclassification and renewed checkpoints for material deviations where required. Distinguish checks you ran from owner-reported evidence. Avoid unrelated scans or costly checks without reason. Re-review owner corrections; never fix them yourself.
 
 ## Findings and handoff
 
