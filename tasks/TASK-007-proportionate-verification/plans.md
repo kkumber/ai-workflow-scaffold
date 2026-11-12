@@ -1,5 +1,12 @@
 # TASK-007: Proportionate implementation and verification
 
+## Approval-alignment clarification
+
+- Goal/authorization/workflow: user's instruction that approval follow the TDD policy; direct documentation clarification, root owner.
+- Scope/approach/checks: AGENTS.md, three role TOMLs, tasks/_template/plans.md, tasks/README.md and this entry. Make shared risk trigger explicit, remove misleading approved-only role descriptions, and clarify focused tests/routine in-scope fixes do not create approval gates. Preserve major/flow/high-risk checkpoints, review-first requests and separate action/host permissions. Check actual TOML and policy consistency; no builds/suites.
+- Evidence/review/limits: inline Python direct check from repository root parsed all three actual TOML roles, verified unchanged medium/medium/high efforts and omitted models, common risk-trigger language, direct focused-test exception and retained high-risk TDD/checkpoint policy. `git diff --check` passed with LF/CRLF notices only. Root self-review confirmed role/form/guide consistency and preserved separate permissions; no actionable findings. No builds/suites ran.
+- Status/next: done; None.
+
 - Status/owner/mode/revision: done; root orchestrator documentation phase then self-review; R1 / STEP-01 complete. Workflow: direct, specific approved documentation change; meaningful static checks, no application behavior changes.
 - Authorization: user approved the proposed risk-based policy and explicitly requested all guidelines/roles be updated, without builds or full test suites. Setup: scaffold-source maintenance, PROJECT.md remains template.
 - Observed → expected: all application edits currently require tests-first and approval; introduce direct implementation for small low-risk work, preserving TDD/checkpoints for major features, material flows and high-risk behavior. Select focused checks and escalate on evidence, not file size/frontend labels.

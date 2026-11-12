@@ -34,6 +34,8 @@ The plan is canonical for requirements, applicable cases/approval and actual res
 
 ## Execute, review and resume
 
+TDD and the additional implementation-approval checkpoint have the same risk trigger. Direct low-risk work proceeds under the original request, including routine fixes within scope; writing/running a focused test does not add a checkpoint. New risk or changed approved expectations/scope requires reclassification and any applicable renewed approval. Explicit review-first requests and separate host/action permissions remain binding.
+
 Record workflow/risk rationale and selected checks using [AGENTS.md](../AGENTS.md#classify-the-change-and-select-verification). For major features, new/material flows and high-risk behavior, follow its test-first cycle and step-specific approval; backend approval does not approve dependent test-first frontend work. Small low-risk changes may proceed directly within the user's scope after inspection, then focused verification/review. No new test or failing baseline is automatic for that workflow. Do not classify by frontend/backend labels or file size. Prefer focused regression tests for fixes; broaden checks only for relevant evidence, uncertainty, requirements or user requests.
 
 Use the assigned [backend](../.codex/agents/backend.toml), [frontend](../.codex/agents/frontend.toml) or [reviewer](../.codex/agents/reviewer.toml) duties only when relevant. Concrete paths come from PROJECT.md and the active plan. Stabilize contracts before dependent implementation; mocks disclose their limits. Shared files have one owner; reviewers report without edits. If delegation is unavailable, declare sequential phases and label review self-review. Provide focused handoffs rather than entire chat histories.

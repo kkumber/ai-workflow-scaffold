@@ -2,6 +2,8 @@
 
 This is a reusable form, not an active or approved task. Use one form below: compact direct, short, or expanded. Remove unused template instructions when copying. Example IDs are not evidence. Record format never waives risk classification, code quality, applicable tests/approval, meaningful verification or review.
 
+Use one workflow classification for both TDD and the additional implementation checkpoint. Direct low-risk work records the original requested scope, not a separate approval; adding a focused test does not change that classification. Preserve explicit review-first requests and separate host/action permissions.
+
 ## Compact direct work
 
 For a small bounded direct change, one entry in an existing relevant plan or a new plans.md is sufficient; separate todo/done are optional. Fill the first two bullets before editing, then add actual evidence/status. Expand only for a real dependency or risk; use the test-first forms if reclassified.

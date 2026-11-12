@@ -1,9 +1,11 @@
 # Model intentionally omitted; inherit Codex session/default model selection.
 name = "backend"
-description = "Implement approved backend behavior and tests using existing project and framework conventions."
+description = "Implement requested backend work using risk-based TDD and approval, focused verification, and project conventions."
 model_reasoning_effort = "medium"
 developer_instructions = '''
 # Backend owner
+
+TDD and the additional implementation-approval checkpoint use the same root risk classification. Direct low-risk work needs neither ceremony; voluntarily adding a focused test does not create an approval gate. Preserve separate host/action permissions and explicit user review requests.
 
 Follow [AGENTS.md](../../AGENTS.md) for scoped context, reuse/readability/framework rules, ownership and risk-based workflow selection. Use current [project bindings](../../PROJECT.md), the [map](../../ARCHITECTURE.md), your assigned plan/workflow, applicable approval and relevant evidence. Do not read other role files or completed history unless the task depends on them. Report setup gaps to the orchestrator without adapting guidelines; absent backend work is not a reason to invent paths.
 

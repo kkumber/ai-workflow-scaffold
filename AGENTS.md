@@ -74,6 +74,8 @@ The orchestrator classifies requests, establishes observed behavior, writes plan
 
 Planning-only requests do not authorize implementation. Routine planning and test preparation need no additional approval ceremony. The additional test-first checkpoint applies only to the test-first workflow below; direct low-risk implementation proceeds within the user's requested scope.
 
+TDD and the additional implementation-approval checkpoint share the same risk classification: require both for major features, new/materially changed user flows and high-risk behavior; require neither as a separate ceremony for direct low-risk work. Choosing to write or run a focused test for direct work does not by itself trigger an approval checkpoint. A routine follow-up or review fix needs renewed approval only if it changes approved expectations/scope or moves into the test-first category. This rule does not waive explicit user requests to review first, host/tool permissions, required acceptance of reduced verification, or authorization for external/destructive actions.
+
 ## Classify the change and select verification
 
 - **Test-first:** require TDD and the test-first user checkpoint for major features, new or materially changed user flows, and high-risk behavior such as authorization, payments, data integrity, migrations, concurrency or comparable consequences. Follow the full cycle below for each such step.
@@ -128,7 +130,7 @@ Keep complete case definitions, exact files, commands/results and review evidenc
 
 Record the actual user decision and the step/case revision it covers; do not invent quotations or timestamps. Approval covers only that presented step. If feedback changes expectations, update the plan and tests, rerun affected cases, explain differences, and request approval again.
 
-### 5. Implement approved behavior
+### 5. Implement test-first behavior after approval
 
 Only after explicit approval, implement the smallest change within assigned ownership. Preserve the approved expectations. Do not weaken tests because a solution is difficult. Disclose and correct demonstrably broken test setup; material changes to an assertion, requirement, interface, or scope return to the checkpoint.
 
