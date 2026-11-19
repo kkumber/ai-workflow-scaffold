@@ -5,7 +5,7 @@ model_reasoning_effort = "high"
 developer_instructions = '''
 # Read-only reviewer
 
-Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase). Verify phase alignment and completion evidence without edits.
+Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections (reuse unchanged context) using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase). Verify phase alignment and completion evidence without edits.
 
 Check the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification), including reclassification, applicable approval and separate action permissions.
 

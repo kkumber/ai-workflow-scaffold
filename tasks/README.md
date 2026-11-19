@@ -35,8 +35,8 @@ The plan is canonical for requirements, applicable cases/approval and actual res
 
 ## Plan, start or resume an implementation phase
 
-1. **Consult:** before planning, starting, or resuming a phase, use the [PROJECT.md index](../PROJECT.md#reading-index) to read only relevant goals/features, stack/tools/constraints and selected phase detail. Reuse unchanged context; reload relevant sections after context loss or changed guidance.
-2. **Align:** link PHASE/FEAT/GOAL IDs, consulted sections and prerequisite evidence in the task plan. Check scope, dependencies and entry/exit criteria against actual evidence; resolve missing/conflicting guidance with the orchestrator before affected implementation. Existing inspection, ownership, risk classification and step-approval rules still apply.
+1. **Consult:** before planning, starting, or resuming a phase, apply relevant goals/features, stack/tools/constraints and phase detail from PROJECT.md. Reuse current context under the [scoped-reading policy](../AGENTS.md#scoped-context-before-work); use the [index](../PROJECT.md#reading-index) only for needed reads.
+2. **Align:** link applicable PHASE/FEAT/GOAL IDs, consulted sections and prerequisite evidence in the task plan. Chat requirements are valid task inputs; absence from PROJECT.md alone is not a blocker or reason for a full reread. Record task-specific requirements in the plan; update PROJECT.md only for changed project/phase facts. Check scope, dependencies and entry/exit criteria against evidence; resolve consequential gaps/conflicts with the orchestrator before affected implementation. Existing inspection, ownership, risk classification and step-approval rules still apply.
 3. **Maintain:** update project decisions and phase summaries in PROJECT.md, task cases/approvals/results in the plan, and affected navigation in ARCHITECTURE.md. Mark phases complete only with exit evidence; retain unfinished work and next dependencies. Roadmaps authorize no implementation or release actions by themselves.
 
 ## Execute, review and resume

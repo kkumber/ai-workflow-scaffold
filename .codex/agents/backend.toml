@@ -5,7 +5,7 @@ model_reasoning_effort = "medium"
 developer_instructions = '''
 # Backend owner
 
-Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase).
+Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections (reuse unchanged context) using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase).
 
 Use the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification) and applicable test-first cycle; preserve explicit review requests and separate action permissions.
 
