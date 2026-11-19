@@ -17,7 +17,7 @@ tests/
   updates.test.cjs                 <-- versioned update/resolve and metadata safety cases
   codex-agents.test.cjs            <-- Codex role fields and legacy-layout migration
 AGENTS.md                         <-- orchestrator, risk classification, applicable test-first gate
-PROJECT.md                        <-- detailed project blueprint, phased roadmap, setup and adoption fields
+PROJECT.md                        <-- concise project overview/index, roadmap, setup and bindings
 ARCHITECTURE.md                    <-- this navigation and ownership guide
 .codex/agents/
   backend.toml                    <-- backend role, medium reasoning, inherited model
@@ -46,6 +46,12 @@ tasks/
 PROJECT.md holds the setup state, target identity, inspected evidence, concrete ownership paths, and established/configured commands. This map supplies navigation, not a second setup-state store. During first use, edit tree entries, annotations, entry-point references, and source-only wording to match inspected files. Preserve reusable sections and shared workflow relationships; remove obsolete setup-only sections under AGENTS.md cleanup. Add or remove entries as the actual structure requires; do not regenerate unrelated guidance. Never copy illustrative application paths below into the verified map without evidence.
 
 For a blank project, record the observed empty application areas and unresolved stack/layout instead of generating a preferred framework. For monorepos, name the selected workspace and relevant shared boundaries; resolve an ambiguous target first. A bounded structure scan is allowed for mapping; routine source inspection stays targeted.
+
+## Project-owned planning documents
+
+AI setup creates `plans/PROJECT-SPEC.md`, relevant `plans/features/FEAT-NN-name.md` files and one `plans/phases/PHASE-NN-name.md` per agreed phase, or links equivalent existing specs. PROJECT.md indexes them; task records retain cases/approvals/evidence. Use the [modular layout and forms](tasks/README.md#modular-project-documents).
+
+The source plans/ README files illustrate this layout and are not in the initializer's eleven-file managed set. Reusable forms live in the already-distributed tasks/_template/plans.md; setup-generated project plans are maintained by agents, not overwritten or tracked by the scaffold updater.
 
 ## Ownership and contracts
 

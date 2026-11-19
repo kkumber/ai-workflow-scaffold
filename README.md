@@ -132,6 +132,10 @@ When maintaining this repository itself, leave its setup status as `template` an
 
 Run `npm test` to exercise the setup command using Node's built-in test runner and isolated temporary projects. Link tests require permission to create filesystem links, including file symlinks on Windows. These are scaffold-tool tests, not a receiving application's test system. No database or deployment is supplied. The package currently declares `UNLICENSED`; no open-source license grant is included.
 
+## Modular project planning
+
+Keep PROJECT.md a brief overview/index. AI setup creates detailed specifications under plans/ and one Markdown document per agreed phase under plans/phases/; it reuses existing canonical docs. See the [layout and on-demand forms](tasks/README.md#modular-project-documents). Installation delivers the forms, not a prepopulated plans tree; source plans/ README files are layout guides.
+
 ## Context-efficient work
 
 Follow [scoped reading](AGENTS.md#scoped-context-before-work) and [efficient tool use](AGENTS.md#efficient-tools-and-guidance). Personal model/plugin settings remain user-controlled; shorter guidance does not guarantee a particular token bill.
