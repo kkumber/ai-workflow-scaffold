@@ -41,14 +41,14 @@ Allowed values: `template`, `in progress`, `ready`. This scaffold source intenti
 | Verification performed | [TODO: actual path/link/consistency checks and results] |
 | Commands discovered but not run | [TODO: distinguish configured commands from verified results] |
 | Blocking setup decisions | [TODO: question, impact, owner, next action; None when resolved] |
-| Nonblocking unknowns | [TODO: values deferred until relevant application work] |
+| User-agreed deferrals | [TODO: detail, actual user agreement, impact, owner, dependent work that must wait and next resolution action; None only when established] |
 | Resume / next action | [TODO: remaining setup action or None when ready] |
 
-Set `ready` only after the target is identified, relevant project bindings and links are accurate, applicable cleanup is complete, shared policies remain intact, and no blocking setup decision remains. Do not infer readiness from the absence of TODO markers: reusable task placeholders must remain blank, and nonblocking project unknowns may remain explicit. Ready describes documentation setup only. Reuse a matching ready record without wholesale rewrites; check stale or copied records against the actual project.
+Set `ready` only after the target is identified, relevant project bindings and links are accurate, applicable cleanup is complete, shared policies remain intact, every setup detail satisfies the [first-use completion rule](tasks/README.md#first-use-procedure), and no unanswered setup decision remains. Every detail must be filled from evidence/user answers, supported as not applicable, or explicitly deferred by the user with limits recorded. Otherwise retain `in progress`. Do not infer readiness from the absence of TODO markers: reusable task placeholders must remain blank; unresolved project details require recorded user agreement to defer. Ready describes documentation setup only. Reuse a matching ready record without wholesale rewrites; check stale or copied records against the actual project.
 
 ## Adoption fields
 
-When copying to another project, adapt the repository-specific introduction and fields below from actual requirements and inspection, following AGENTS.md. Change only project bindings, not the form's structure. `[TODO: ...]` marks missing information, not an approved value. Resolve fields that affect a task before implementing that task; unrelated unknowns need not block setup or other work. Preserve existing host and local instructions. Identify non-applicable roles or commands with an observed reason instead of inventing values.
+When copying to another project, adapt the repository-specific introduction and fields below from actual requirements and inspection, following AGENTS.md. Change only project bindings, not the form's structure. `[TODO: ...]` marks missing information, not an approved value. During setup, give every detail a recorded disposition under the first-use completion rule; do not leave unasked unknowns merely because they seem unrelated or nonblocking. Resolve deferred details before their dependent work; user agreement to defer documentation decisions does not authorize dependent implementation. Preserve existing host and local instructions. Identify non-applicable roles or commands with an observed reason instead of inventing values.
 
 | Field                          | Project value                                                                      |
 | ------------------------------ | ---------------------------------------------------------------------------------- |
