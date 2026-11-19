@@ -9,7 +9,7 @@ Use one workflow classification for both TDD and the additional implementation c
 For a small bounded direct change, one entry in an existing relevant plan or a new plans.md is sufficient; separate todo/done are optional. Fill the first two bullets before editing, then add actual evidence/status. Expand only for a real dependency or risk; use the test-first forms if reclassified.
 
 - Goal / authorization / workflow: [TODO: requested outcome, direct risk rationale and one owner]
-- Scope / approach / selected verification: [TODO: exact affected files/actions, relevant dependencies, observable acceptance and focused check/expected outcome]
+- Scope / approach / selected verification: [TODO: exact affected files/actions, relevant dependencies, observable acceptance and focused check/expected outcome; for phased implementation consult PROJECT.md before planning, starting, or resuming each phase and link its sections, PHASE/FEAT/GOAL IDs and prerequisite evidence consulted]
 - Evidence / review / limits: [TODO: actual command or reproducible inspection, result and review attribution; material limits only]
 - Status / next action: [TODO: actual stage; unfinished action or done]
 
@@ -19,7 +19,7 @@ Retain this section and remove unused expanded form instructions when copying. E
 
 - Task/status/owner/mode/revision/active step: [TODO; disclose self-review]
 - Workflow/risk rationale and selected checks: [TODO: direct low-risk or test-first; justify from behavior/dependencies, record focused checks and escalation triggers]
-- Requirement/user decision and setup reference: [TODO; link PROJECT.md, do not duplicate setup state]
+- Requirement/user decision and project reference: [TODO: link PROJECT.md setup and relevant blueprint sections; for phased implementation consult PROJECT.md before planning, starting, or resuming each phase and record PHASE/FEAT/GOAL IDs, entry/exit criteria references and prerequisite evidence consulted; do not duplicate project requirements/setup state]
 - Observed behavior → expected outcome; scope and material decisions: [TODO: evidence and reason]
 - Exact existing/proposed files, actions, purposes and one owner per shared file: [TODO: compact inventory]
 - STEP-01 / AC-01: [TODO: ordered actions, observable criterion, basis and dependencies]
@@ -57,6 +57,8 @@ Use the following sections instead of the short form when the task warrants thei
 - Plan revision: [TODO: simple revision label, e.g. R1; increment on material changes]
 - Active step: [TODO: STEP ID]
 - Project setup reference: [PROJECT.md](../../PROJECT.md), including target identity, setup status, and relevant unresolved bindings. Do not duplicate setup state here. Complete the root scoped orientation and applicable first-use setup before application work; this task may document setup itself when that is the requested work.
+
+- Phase guidance reference: [TODO for phased implementation: selected PHASE ID, FEAT/GOAL IDs and links to PROJECT.md purpose, feature, stack/tool and phase sections consulted; prerequisite evidence, relevant open decisions and entry/exit criteria. Follow tasks/README.md phase guidance procedure before planning, starting, or resuming implementation; task approval remains step-specific.]
 
 ## Objective, current behavior, and scope
 

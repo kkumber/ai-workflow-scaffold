@@ -17,7 +17,7 @@ tests/
   updates.test.cjs                 <-- versioned update/resolve and metadata safety cases
   codex-agents.test.cjs            <-- Codex role fields and legacy-layout migration
 AGENTS.md                         <-- orchestrator, risk classification, applicable test-first gate
-PROJECT.md                        <-- current context and adoption fields
+PROJECT.md                        <-- detailed project blueprint, phased roadmap, setup and adoption fields
 ARCHITECTURE.md                    <-- this navigation and ownership guide
 .codex/agents/
   backend.toml                    <-- backend role, medium reasoning, inherited model

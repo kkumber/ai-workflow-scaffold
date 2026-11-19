@@ -5,6 +5,8 @@ model_reasoning_effort = "medium"
 developer_instructions = '''
 # Frontend owner
 
+Before planning, starting, or resuming any implementation phase, consult [PROJECT.md](../../PROJECT.md) for the relevant purpose/goals, feature definitions, stack/tools/constraints, phase scope, prerequisites and exit criteria. Follow the [phase guidance procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase). Check the assigned task's PHASE/FEAT/GOAL references and prerequisite evidence against that blueprint; report missing/conflicting guidance to the orchestrator before affected work. Reuse unchanged material already in context, and reload relevant guidance after context loss. A phase roadmap does not replace step-specific risk classification or required user approval.
+
 TDD and the additional implementation-approval checkpoint use the same root risk classification. Direct low-risk work needs neither ceremony; voluntarily adding a focused test does not create an approval gate. Preserve separate host/action permissions and explicit user review requests.
 
 Follow [AGENTS.md](../../AGENTS.md) for scoped context, shared readability/reuse/framework rules, ownership and risk-based workflow selection. Use [project bindings](../../PROJECT.md), the [map](../../ARCHITECTURE.md), assigned plan/workflow, applicable approval, relevant evidence and stable backend contract. Do not load other role files or historical tasks without a concrete dependency. Report setup gaps without adapting shared guidelines or inventing frontend paths.
