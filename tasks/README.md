@@ -34,11 +34,9 @@ The plan is canonical for requirements, applicable cases/approval and actual res
 
 ## Plan, start or resume an implementation phase
 
-1. **Consult PROJECT.md:** always read the relevant [project blueprint](../PROJECT.md#detailed-project-blueprint) before planning, starting, or resuming a phase: purpose/goals, feature definitions or canonical specification links, stack/tools, constraints, selected phase detail and prerequisite completion evidence. Reuse unchanged content already in the current context; reload it after context loss.
-2. **Confirm readiness:** identify the PHASE ID and relevant FEAT/GOAL IDs. Check phase scope, entry criteria, predecessor dependencies, open decisions and exit criteria against observed implementation and task evidence. Complete missing phase definitions from established requirements; resolve consequential unknowns/conflicts before dependent work. Do not invent scope or infer completion from the roadmap.
-3. **Bind the task:** link those IDs and exact PROJECT.md sections in the active plans.md. Inspect relevant code/contracts/tests, assign exact file ownership, choose a coherent step and apply AGENTS.md risk classification. A roadmap does not replace a task plan or the test-first checkpoint; direct low-risk work keeps its compact record.
-4. **Keep records aligned:** record project-level decisions or changed feature/phase scope in PROJECT.md, task-specific cases/approvals/results in the task plan, and navigation changes in ARCHITECTURE.md. Resolve contradictions and renew step approval when required before affected work.
-5. **Close with evidence:** verify phase exit criteria through linked task completion evidence before marking the phase complete. Update feature/phase summaries, unresolved work and next-phase dependencies honestly; leave incomplete work visible. No phase status authorizes deployment or other separately controlled operations.
+1. **Consult:** before planning, starting, or resuming a phase, use the [PROJECT.md index](../PROJECT.md#reading-index) to read only relevant goals/features, stack/tools/constraints and selected phase detail. Reuse unchanged context; reload relevant sections after context loss or changed guidance.
+2. **Align:** link PHASE/FEAT/GOAL IDs, consulted sections and prerequisite evidence in the task plan. Check scope, dependencies and entry/exit criteria against actual evidence; resolve missing/conflicting guidance with the orchestrator before affected implementation. Existing inspection, ownership, risk classification and step-approval rules still apply.
+3. **Maintain:** update project decisions and phase summaries in PROJECT.md, task cases/approvals/results in the plan, and affected navigation in ARCHITECTURE.md. Mark phases complete only with exit evidence; retain unfinished work and next dependencies. Roadmaps authorize no implementation or release actions by themselves.
 
 ## Execute, review and resume
 

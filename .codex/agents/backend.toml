@@ -5,7 +5,7 @@ model_reasoning_effort = "medium"
 developer_instructions = '''
 # Backend owner
 
-Before planning, starting, or resuming any implementation phase, consult [PROJECT.md](../../PROJECT.md) for the relevant purpose/goals, feature definitions, stack/tools/constraints, phase scope, prerequisites and exit criteria. Follow the [phase guidance procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase). Check the assigned task's PHASE/FEAT/GOAL references and prerequisite evidence against that blueprint; report missing/conflicting guidance to the orchestrator before affected work. Reuse unchanged material already in context, and reload relevant guidance after context loss. A phase roadmap does not replace step-specific risk classification or required user approval.
+Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase).
 
 TDD and the additional implementation-approval checkpoint use the same root risk classification. Direct low-risk work needs neither ceremony; voluntarily adding a focused test does not create an approval gate. Preserve separate host/action permissions and explicit user review requests.
 

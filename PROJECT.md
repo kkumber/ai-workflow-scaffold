@@ -1,5 +1,17 @@
 # Project context
 
+## Reading index
+
+Use this index to select relevant sections; do not routinely read the whole file. Reuse unchanged context and reload relevant sections after context loss.
+
+| Need | Sections |
+|---|---|
+| Purpose and outcomes | [Identity](#project-identity-and-purpose), [goals](#goals-objectives-and-success-measures) |
+| Feature scope | [Catalogue and behavior](#feature-catalogue-and-behavior) |
+| Implementation constraints | [Stack](#technical-stack-and-architecture-decisions), [tools](#tools-and-working-environment), [bindings](#adoption-fields) |
+| Current phase | [Roadmap and phase links](#implementation-plan-by-phases) |
+| Setup | [Setup record](#workflow-setup-record) |
+
 ## Current template repository
 
 This repository supplies Codex-specific project guidance and standalone backend, frontend, and read-only reviewer configurations. Its users are project owners and Codex agents selecting risk-based implementation and focused verification: TDD/user checkpoints for major features, material flows and high-risk work, direct implementation for small low-risk changes. The roles live in [.codex/agents/backend.toml](.codex/agents/backend.toml), [.codex/agents/frontend.toml](.codex/agents/frontend.toml), and [.codex/agents/reviewer.toml](.codex/agents/reviewer.toml); backend/frontend reasoning is medium and reviewer high. No role sets a model, so the user's Codex session/default model choice remains in control. This source repository's maintenance history is excluded from package and receiving-project copies.
@@ -142,9 +154,11 @@ Use stable PHASE IDs, explicit feature assignments and dependency order. Define 
 
 | Phase ID / title | Outcome / linked goals | Included FEAT IDs and scope | Prerequisites / predecessor phases | Owner | Status / linked task plans | Exit evidence |
 |---|---|---|---|---|---|---|
-| PHASE-01 / [TODO] | [TODO: usable outcome, GOAL IDs] | [TODO: feature IDs and bounded deliverables] | [TODO: decisions, dependencies and readiness] | [TODO] | [TODO: proposed/planned/in progress/blocked/complete/deferred; links] | [TODO: measurable exit criteria and result references] |
+| [PHASE-01](#phase-01) / [TODO] | [TODO: usable outcome, GOAL IDs] | [TODO: feature IDs and bounded deliverables] | [TODO: decisions, dependencies and readiness] | [TODO] | [TODO: proposed/planned/in progress/blocked/complete/deferred; links] | [TODO: measurable exit criteria and result references] |
 
-**Phase detail: PHASE-01 — [TODO: title]**
+#### PHASE-01
+
+Title: [TODO: phase title]. Add a matching heading and roadmap link for each phase.
 
 1. **Goal and scope:** [TODO: expected usable result, linked goals/features and exclusions]
 2. **Entry criteria:** [TODO: required decisions, earlier phase evidence, stable contracts and environment readiness]
@@ -161,9 +175,7 @@ Repeat this detail for subsequent phases. Split a phase into coherent implementa
 
 ### Using this blueprint during implementation
 
-Before planning, starting, or resuming any implementation phase, always consult this PROJECT.md: read the relevant project purpose, goals, feature specifications/references, stack/tools/constraints, selected phase detail and prerequisite evidence. Reuse unchanged sections already present in the current context; do not substitute a remembered summary after context loss. Follow the [phase guidance procedure](tasks/README.md#plan-start-or-resume-an-implementation-phase) and link the PHASE/FEAT/GOAL IDs and relevant blueprint sections from the active task plan.
-
-Resolve missing or contradictory decisions that affect the phase before dependent implementation. Record project-level scope/stack/sequence changes here and task-specific decisions/evidence in the active plan. Apply the existing test-first checkpoint to each qualifying step; consulting this blueprint never bypasses it. At phase completion, update the phase summary and feature status only from linked completion evidence. Keep unfinished criteria and dependencies visible.
+Before planning, starting, or resuming a phase, use the [reading index](#reading-index) and shared [phase procedure](tasks/README.md#plan-start-or-resume-an-implementation-phase).
 
 ## Context maintenance
 
