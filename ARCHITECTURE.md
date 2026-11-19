@@ -5,7 +5,7 @@
 This map covers the workflow files created by this template, not every possible item in the repository. No application architecture has been inferred.
 
 ```text
-package.json                      <-- GitHub package metadata, CLI entry, test command
+package.json                      <-- create-workflow-scaffold package, dual CLI aliases, test command
 README.md                         <-- installation, integration, adaptable project guide
 bin/
   ai-workflow-scaffold.cjs         <-- init/update/resolve command routing
@@ -34,7 +34,7 @@ tasks/
 ## Entry points and relationships
 
 - Start at [AGENTS.md](AGENTS.md). Read [PROJECT.md](PROJECT.md) for concrete project constraints and consult this map to find relevant files.
-- [README.md](README.md) explains GitHub npx setup and updates; [package.json](package.json) exposes [the CLI](bin/ai-workflow-scaffold.cjs) and selects the payload. [Shared file handling](lib/scaffold-files.cjs) supplies the eleven-document allowlist and path checks; [the update engine](lib/scaffold-updates.cjs) records upstream text, compares current/new content, uses Git for clean two-sided merges, and stages conflicts for explicit resolution. Initial setup preserves custom files and marks unknown originals honestly. Reruns use receiving-project `.ai-workflow-scaffold/state.json`; incoming review files and an exclusive lock live in the same metadata directory. That state is generated at runtime and is not a source-package artifact.
+- [README.md](README.md) explains short npm initializer commands (after publication), GitHub fallback and updates; [package.json](package.json) exposes create-workflow-scaffold and compatibility ai-workflow-scaffold aliases for [the same CLI](bin/ai-workflow-scaffold.cjs) and selects the payload. [Shared file handling](lib/scaffold-files.cjs) supplies the eleven-document allowlist and path checks; [the update engine](lib/scaffold-updates.cjs) records upstream text, compares current/new content, uses Git for clean two-sided merges, and stages conflicts for explicit resolution. Initial setup preserves custom files and marks unknown originals honestly. Reruns use receiving-project `.ai-workflow-scaffold/state.json`; incoming review files and an exclusive lock live in the same metadata directory. That state is generated at runtime and is not a source-package artifact.
 - Consumer copies omit package metadata, CLI/lib/tests, and source task history; only eleven reusable documents plus their tracking state are created. The package excludes repository-local TASK-* history: only tasks/README.md and tasks/_template/*.md are distributed from tasks. Keep the receiving application's manifest, adapt the root README, preserve active update tracking through cleanup, and remove source-tool map entries/references when not copied.
 - [AGENTS.md](AGENTS.md#scoped-context-before-work) governs scoped reading and ownership; [backend](.codex/agents/backend.toml), [frontend](.codex/agents/frontend.toml) and [reviewer](.codex/agents/reviewer.toml) supply role-specific duties.
 - [tasks/README.md](tasks/README.md) explains copying [plans.md](tasks/_template/plans.md), [todo.md](tasks/_template/todo.md), and [done.md](tasks/_template/done.md) into one task folder.

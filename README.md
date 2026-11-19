@@ -14,9 +14,41 @@ This repository is the reusable scaffold source. In a receiving project, this RE
 
 Each file supplies name, description, reasoning effort, and the full role instructions. No file sets `model`: continue choosing your model in Codex desktop; these roles retain Codex's parent/default model resolution. No personal settings or project `.codex/config.toml` are created or rewritten. Custom roles inherit parent permissions; the reviewer's read-only constraint is enforced through its instructions, not a separate sandbox override. Use a Codex client that supports the documented standalone project-agent format. See the [official Codex subagent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
-## Installation from GitHub
+## Version 0.4.0
 
-Prerequisites: Node.js 20 or newer, npm (including npx), Git, and access to the GitHub repository. Run this from the receiving project's root:
+- Lean startup/context reuse, explicit setup clarification and concise PROJECT.md with linked feature/phase documents.
+- Existing managed-file layout and `.ai-workflow-scaffold/` update history remain compatible; AI setup creates project-owned plans from the delivered forms.
+- Update an initialized project to this GitHub version:
+
+```sh
+npx github:kkumber/ai-workflow-scaffold#v0.4.0 update
+```
+
+For first-time initialization, omit `update`. Review merged guidance and resolve reported conflicts using the update procedure below. npm availability is separate from the GitHub tag.
+
+## Installation
+
+Prerequisites: Node.js 20 or newer and npm (including npx). Run from the receiving project's root. The memorable registry command is:
+
+```sh
+npx create-workflow-scaffold
+```
+
+Equivalent npm initializer:
+
+```sh
+npm create workflow-scaffold
+```
+
+These short commands install the npm package `create-workflow-scaffold` from this repository's maintainer. Registry installs do not need Git for fetching; Git is needed for the GitHub fallback below and for updates that merge both local and upstream edits. Use the GitHub fallback if the selected npm release is unavailable.
+
+**Release status:** npm publication is pending publisher two-factor authentication. The short registry commands are prepared and locally verified, but are not live until publication succeeds; use the GitHub fallback for a pushed revision in the meantime.
+
+Use `npx create-workflow-scaffold@latest` when explicitly selecting the latest release, or pin a reviewed published version as `npx create-workflow-scaffold@VERSION`. `npx create workflow-scaffold` is not the initializer syntax; use the hyphenated npx command or `npm create` above. See [npm init](https://docs.npmjs.com/cli/v11/commands/npm-init/).
+
+### GitHub fallback
+
+With Git installed and access to the repository, run:
 
 ```sh
 npx github:kkumber/ai-workflow-scaffold
@@ -39,35 +71,41 @@ npx runs the command from npm's cache without adding a project dependency. On fi
 Show usage without copying files:
 
 ```sh
-npx github:kkumber/ai-workflow-scaffold --help
+npx create-workflow-scaffold --help
 ```
+
+GitHub fallback: `npx github:kkumber/ai-workflow-scaffold --help`.
 
 If you prefer to retain the package as development tooling, you can instead install it and then run its setup command:
 
 ```sh
 npm install --save-dev github:kkumber/ai-workflow-scaffold
-npx ai-workflow-scaffold
+npx create-workflow-scaffold
 ```
 
 That optional install adds a development dependency; commit its manifest/lockfile changes according to project conventions. Installing alone does not copy root guidance. The package has no lifecycle hooks or runtime dependencies.
 
-The GitHub commands require these package files to be committed and pushed to the selected revision. Fetching by package name without a prior local install assumes separate npm registry publication; this scaffold does not require that publication.
+The GitHub commands require these package files to be committed and pushed to the selected revision. Fetching by package name without a prior local install requires npm registry publication. Both create-workflow-scaffold and the older ai-workflow-scaffold executable alias point to the same CLI; existing help/recovery output may use the older alias. The GitHub repository URL and .ai-workflow-scaffold tracking directory retain their names.
 
 ## Update an adopted project
 
-After initialization, rerunning the command performs a managed update. You can also request it explicitly:
+After initialization, rerunning the command performs a managed update. Explicitly select the latest release with:
 
 ```sh
-npx github:kkumber/ai-workflow-scaffold update
+npx create-workflow-scaffold@latest update
 ```
+
+GitHub fallback: `npx github:kkumber/ai-workflow-scaffold update`.
 
 The updater compares the saved upstream baseline, your current document, and the selected package's new template. Untouched documents receive upstream changes; separate edits are combined with Git's three-way text merge. Git must be available when both sides changed. Local customizations and deliberately deleted files are retained when upstream is unchanged. A deleted file changed upstream is reported for review, not recreated. CRLF documents keep their newline style. A content fingerprint detects template changes even when the package version string was not changed.
 
 If edits overlap or an original baseline is unknown, the project file stays untouched and the upstream copy is saved at `.ai-workflow-scaffold/incoming/<document-path>`. Independent clean updates may still apply; the command returns exit code 2 for unresolved conflicts. Review the incoming copy and edit the project document to combine the changes. Then explicitly acknowledge that document:
 
 ```sh
-npx github:kkumber/ai-workflow-scaffold resolve AGENTS.md
+npx create-workflow-scaffold@latest resolve AGENTS.md
 ```
+
+GitHub fallback: `npx github:kkumber/ai-workflow-scaffold resolve AGENTS.md`. The same command arguments work through either installation source.
 
 Use the reported canonical document path; for a lowercase root `readme.md`, the resolve argument is still `README.md`. Resolution records the exact staged upstream baseline and preserves your project file, including a deliberate deletion. It does not apply or verify your manual merge. Leave incoming copies unedited; changes to review artifacts are preserved and must be moved aside or reviewed before they can be replaced. A later command can then merge future upstream changes using the acknowledged base.
 
@@ -75,7 +113,7 @@ Keep `.ai-workflow-scaffold/state.json` with the project-owned guidance, normall
 
 For a project installed with the old copy-only command, run normal initialization once to start tracking. Existing custom files are preserved with unknown originals; the next update stages them for one-time manual integration and resolution. Missing files are copied during this initial adoption, so review intentional legacy deletions and old `agents/*.md` customizations first. Integrate applicable old role instructions into the new TOML rather than assuming defaults imported them. `update` without state stops and explains initialization; it never guesses a historical baseline.
 
-npx uses the package revision you request. To select a reviewed new revision explicitly, replace `COMMIT_SHA` with its full commit hash:
+npx uses the package revision you request. Registry versions can be pinned as `npx create-workflow-scaffold@VERSION update` after publication. For GitHub, replace `COMMIT_SHA` with a reviewed full commit hash:
 
 ```sh
 npx github:kkumber/ai-workflow-scaffold#COMMIT_SHA update
@@ -85,7 +123,7 @@ A pin to an older commit intentionally keeps that older revision. The CLI itself
 
 ## Migrate the previous Markdown roles
 
-For a tracked project using `agents/backend.md`, `agents/frontend.md`, and `agents/reviewer.md`, run the new revision's `update` command. It recognizes that exact previous layout, saves the original tracking bytes as `.ai-workflow-scaffold/pre-codex-agents-state.json`, and stages the three new templates under `.ai-workflow-scaffold/incoming/.codex/agents/`. Existing old roles, pending old review artifacts, and any existing target TOML files remain untouched. A differing or linked migration backup blocks changes rather than being overwritten.
+For a tracked project using `agents/backend.md`, `agents/frontend.md`, and `agents/reviewer.md`, run the new revision's `update` command. It recognizes that exact previous layout, saves the original tracking bytes as `.ai-workflow-scaffold/pre-codex-agents-state.json`, and stages the three new templates under `.ai-workflow-scaffold/incoming/.codex/agents/`. Existing old roles, pending old review artifacts, and any existing target TOML files remain untouched. A differing or linked migration backup blocks changes rather than being overwritten. The following GitHub commands also work as `npx create-workflow-scaffold@latest resolve <path>` after publication.
 
 Review the staged templates and old custom instructions, create or merge the actual `.codex/agents/*.toml` files, and validate the TOML. Keep the model unset to retain your session/default selection and keep the requested role efforts unless you intentionally change them. Then acknowledge each reviewed role:
 
@@ -129,6 +167,8 @@ Before marking setup ready, complete the cleanup and verification steps in the [
 ## Maintain the scaffold source
 
 When maintaining this repository itself, leave its setup status as `template` and future task forms unfilled; retain these reusable setup instructions. Inspect package contents with `npm pack --dry-run` before sharing a revision. The package explicitly includes `.codex/agents/*.toml`, excludes old `agents/*.md`, and excludes repository TASK-* history. Only tasks/README.md and tasks/_template/*.md are included from tasks; repository-local task records remain here as maintenance history.
+
+To make the short command available, an authorized maintainer must sign in with `npm login --registry=https://registry.npmjs.org`, review the package/release, then publish explicitly with `npm publish --access public --registry=https://registry.npmjs.org`. Publishing is a separate public release; local preparation or GitHub push does not publish to npm. Confirm ownership/name availability and an unused release version before publishing. After successful publication, replace the installation publication-status paragraph with the verified release status. No registry credential belongs in this repository.
 
 Run `npm test` to exercise the setup command using Node's built-in test runner and isolated temporary projects. Link tests require permission to create filesystem links, including file symlinks on Windows. These are scaffold-tool tests, not a receiving application's test system. No database or deployment is supplied. The package currently declares `UNLICENSED`; no open-source license grant is included.
 
