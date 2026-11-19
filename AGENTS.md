@@ -29,7 +29,7 @@ On a new session or after context loss, restore missing applicable instructions,
 
 ## First use: adapt guidelines to the project
 
-Missing, template, in-progress or mismatched setup requires the orchestrator to follow the [first-use procedure](tasks/README.md#first-use-procedure) before dependent application work. This reusable source remains template during maintenance. A matching ready record is retained; ready means documentation is configured, not application tests or deployment readiness. Setup is a narrow documentation permission, not application implementation authority. Reviewers report setup gaps without editing. Preserve existing policies and resolve conflicts rather than silently weakening them.
+Missing, template, in-progress or mismatched setup requires the orchestrator to follow the [first-use procedure](tasks/README.md#first-use-procedure) before dependent application work. During receiving-project initialization, create or merge [PROJECT.md](PROJECT.md) using its scaffold, and populate project identity, goals/objectives, features, stack/tools, phased roadmap, ownership/commands and setup record from user requirements and inspected evidence. Preserve existing project content and mark unresolved values explicitly rather than inventing facts. This reusable source remains template during maintenance. A matching ready record is retained; ready means documentation is configured, not application tests or deployment readiness. Setup is a narrow documentation permission, not application implementation authority. Reviewers report setup gaps without editing. Preserve existing policies and resolve conflicts rather than silently weakening them.
 
 ## Efficient tools and guidance
 
