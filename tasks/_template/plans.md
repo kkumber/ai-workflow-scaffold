@@ -1,8 +1,6 @@
 # [TODO: TASK-NNN short title]
 
-This is a reusable form, not an active or approved task. Use one form below: compact direct, short, or expanded. Remove unused template instructions when copying. Example IDs are not evidence. Record format never waives risk classification, code quality, applicable tests/approval, meaningful verification or review.
-
-Use one workflow classification for both TDD and the additional implementation checkpoint. Direct low-risk work records the original requested scope, not a separate approval; adding a focused test does not change that classification. Preserve explicit review-first requests and separate host/action permissions.
+Reusable form, not an active or approved task. Select compact direct, short or expanded; remove unused form instructions. Example IDs are not evidence. All forms follow [AGENTS.md](../../AGENTS.md), especially [risk/verification](../../AGENTS.md#classify-the-change-and-select-verification), the [test-first cycle](../../AGENTS.md#test-first-cycle-repeat-for-each-coherent-step) and [record/reporting rules](../../AGENTS.md#communication-and-completion-report).
 
 ## Compact direct work
 
@@ -39,7 +37,7 @@ Retain this section and remove unused expanded form instructions when copying. E
 - Final review/acceptance: [TODO: mode, findings/dispositions, AC-to-evidence mapping, document/map changes and remaining limits; remove confirmed task-owned temporary artifacts under AGENTS.md, retain required evidence]
 - Resume: [TODO: last valid stage, approval applicability, blocker and precise next action; record changed facts only]
 
-Keep actual results here; todo/done reference them. Apply every relevant root workflow requirement. Do not duplicate case tables, logs or checkpoint text in other records or chat.
+Keep results here; todo/done link them under the root record/reporting rules.
 
 ## Expanded form
 
@@ -99,7 +97,7 @@ Repeat rows as needed. Each coherent step has an explicit workflow classificatio
 
 ## Verification cases: tests-first when required
 
-Expectations originate from requirements, not imagined implementation. For test-first steps define/write tests before application changes. For direct work select meaningful focused inspection, manual procedures or existing tests; new automated tests and an initial failing baseline are not mandatory. Include only relevant cases. Give reproducible manual actions/expected results and explain suitability; required automation replaced with reduced coverage needs explicit acceptance.
+Use the root test-definition and verification policy. Include only relevant cases; for manual checks give reproducible actions/expected results and explain suitability.
 
 ### TC-01
 
@@ -123,7 +121,7 @@ Only fill actual results after running checks. Record working directory, command
 |---|---|---|---|---|---|
 | [TODO] | [TODO] | [TODO: established command] | Not run | [TODO: fill only after execution] | [TODO] |
 
-Initial result classifications: expected behavioral failure; existing-behavior pass; setup/environment failure; test definition/syntax failure; unrelated pre-existing failure; not run. A missing proposed interface must be distinguished from a behavioral assertion reached through it.
+Classify initial results using [the root categories](../../AGENTS.md#2-run-and-classify-initial-results), distinguishing a missing interface from behavior reached through it.
 
 Focused regression strategy: [TODO: checks justified by risk].
 Skipped checks: [TODO: each reason; record explicit user acceptance if required verification is reduced].
@@ -151,7 +149,7 @@ Skipped checks: [TODO: each reason; record explicit user acceptance if required 
 - Approved scope/revision: [TODO: exact step and expectation revision; never infer blanket approval]
 - Feedback and changes since checkpoint: [TODO: renew checkpoint if material]
 
-For test-first steps save evidence, update todo.md and pause affected application changes until the user's reply. Direct low-risk work proceeds under the requested scope without this separate checkpoint; record that classification rather than inventing approval. Disclose documentation checks possible only after writing.
+For test-first steps, save evidence, update todo.md and [wait for explicit step approval](../../AGENTS.md#4-report-to-the-user-and-wait). Disclose documentation checks possible only after writing.
 
 ## Post-implementation review and acceptance
 
@@ -162,9 +160,7 @@ For test-first steps save evidence, update todo.md and pause affected applicatio
 - Map/document updates: [TODO]
 - Remaining work and risks: [TODO]
 
-Only move entries to done.md when the applicable approval, implementation, verification, review, and documentation conditions are satisfied. No blocking finding may remain open. Tests support covered behavior; they do not prove all requirements correct.
-
-Keep cases, commands/results and decisions canonical in this plan; todo and done reference them. Update changed facts only; omit repetitive unaffected subsections after stating why they do not apply. Do not copy shared policy or full logs into records. Use the root concise-report defaults in chat; expand for material decisions and risks.
+Apply root [closure conditions](../../AGENTS.md#6-verify-review-and-close) before moving completed IDs to done.md. Keep cases/results/decisions here; todo/done reference them. Omit unaffected subsections with a reason.
 
 ## Resume and recovery
 

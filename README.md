@@ -114,21 +114,17 @@ Commit the integrated project-owned guidance and update state so the workflow re
 
 ## Adapt this README to the receiving project
 
-During first use, use this document's section structure as a starting point and change project-specific wording in place. Update its title and introduction to the observed project name, purpose, users, and workflows. In the installation section, document the project's actual prerequisites and install commands; keep any still-useful scaffold reference clearly identified as workflow tooling. In setup sections, document verified configuration steps and entry points. Remove obsolete setup-only sections during final cleanup. Never copy example commands as established project commands without inspecting configuration.
-
-Preserve existing README content and user customizations. Reference [PROJECT.md](PROJECT.md) for canonical ownership, command definitions, setup state, and inspected evidence; do not maintain a conflicting second setup record here. Distinguish commands found in configuration from commands actually executed. If stack, commands, or application layout are unknown, say so rather than selecting them. Resolve unknowns before dependent work.
-
-Remove source-only distribution and maintenance wording only where it no longer describes the receiving project. Keep applicable workflow links and shared constraints. Adapt project details again when evidence changes; do not regenerate an already accurate README on every session.
+Follow the [first-use procedure](tasks/README.md#first-use-procedure). Adapt the title, purpose/users/workflows, prerequisites, install/configuration steps and entry points to observed project facts; retain useful content and identify any remaining scaffold commands as workflow tooling. [PROJECT.md](PROJECT.md) owns bindings, commands and setup evidence. Do not regenerate accurate content; update changed facts and remove obsolete source-only sections under that procedure.
 
 ## Use the workflow
 
 Start with [AGENTS.md](AGENTS.md), project context in [PROJECT.md](PROJECT.md), and the [architecture map](ARCHITECTURE.md). The [task guide](tasks/README.md) explains adoption, task creation, approval, execution, and resuming work.
 
-Small direct low-risk work can use one [compact plan entry](tasks/_template/plans.md#compact-direct-work), with goal/risk/files, actual evidence/review and state. Test-first or complex work retains [plans.md](tasks/_template/plans.md), [todo.md](tasks/_template/todo.md) and [done.md](tasks/_template/done.md). Record workflow/risk rationale and selected checks under [AGENTS.md](AGENTS.md#classify-the-change-and-select-verification). Major features, new/material user flows and high-risk behavior require TDD, reviewed initial results and explicit step approval. Direct work proceeds under the user's requested scope with meaningful focused verification/review. Avoid automatic builds/full suites/broad audits; broaden for evidence, requirements or user requests.
+Use the [task guide](tasks/README.md#create-a-task) to select a record form and [AGENTS.md](AGENTS.md#classify-the-change-and-select-verification) for risk-based tests, approval and focused verification.
 
 ## Finish setup and remove scaffolding
 
-Before marking a receiving project's setup ready, follow the cleanup step in AGENTS.md. Remove obsolete adoption walkthroughs, scaffold branding/examples, and source-maintenance sections after replacing them with actual project information. This one-time cleanup section may itself be removed when complete. Inspect candidate scaffold-only files/folders and their references before removal; record exact removals/reasons in PROJECT.md and repair links afterward. Preserve project content, shared policies, reusable roles/task forms, actual setup/task evidence, and `.ai-workflow-scaffold/` tracking while updates are used. Do not delete the whole tasks folder or installed package/cache. Contextual cleanup is the orchestrator's adoption step, not an automatic deletion hook; tracked updates preserve local deletions or report conflicts if upstream changed the deleted material.
+Before marking setup ready, complete the cleanup and verification steps in the [first-use procedure](tasks/README.md#first-use-procedure). This adoption-only section may then be removed. Cleanup is an orchestrator action, not an automatic deletion hook; managed updates preserve local deletions or report upstream conflicts.
 
 ## Maintain the scaffold source
 
@@ -138,4 +134,4 @@ Run `npm test` to exercise the setup command using Node's built-in test runner a
 
 ## Context-efficient work
 
-AGENTS.md defines scoped startup reading and preserves reuse, framework, approval and review requirements. Read the assigned role and current task; consult completed history only for relevant decisions. Load [setup procedures](tasks/README.md#first-use-procedure) for adoption and the [marketing SEO checklist](tasks/README.md#marketing-seo-checklist) for affected public content. Keep requirements/results canonical in plans, pending state in todo and concise completion references in done. Use focused handoffs, relevant skills and compressed routine logs while retrieving complete source/failures when needed. Personal model and plugin settings remain user-controlled; context savings are not a guarantee of a particular token bill.
+Follow [scoped reading](AGENTS.md#scoped-context-before-work) and [efficient tool use](AGENTS.md#efficient-tools-and-guidance). Personal model/plugin settings remain user-controlled; shorter guidance does not guarantee a particular token bill.

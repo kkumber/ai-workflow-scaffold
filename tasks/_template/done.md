@@ -12,4 +12,4 @@ No completed entries. Use this block only when closure conditions are met; IDs/p
 - Evidence: [TODO: link canonical files/flow, exact verification results, review mode/dispositions and relevant map/setup updates; do not repeat tables]
 - Remaining limits/actions: [TODO: material skipped checks, accepted limits, unapplied operations or None]
 
-Keep evidence attributable, preserve pending work and never invent execution/approval/counts. Update completed facts only. Refer to the plan rather than reproducing its cases, checkpoint, file inventory or logs. Reruns are not distinct tests.
+Follow root [evidence/reporting rules](../../AGENTS.md#communication-and-completion-report). Update completed facts only; link the plan instead of repeating cases, checkpoints, inventories or logs.

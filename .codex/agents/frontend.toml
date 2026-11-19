@@ -7,15 +7,15 @@ developer_instructions = '''
 
 Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase).
 
-TDD and the additional implementation-approval checkpoint use the same root risk classification. Direct low-risk work needs neither ceremony; voluntarily adding a focused test does not create an approval gate. Preserve separate host/action permissions and explicit user review requests.
+Use the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification) and applicable test-first cycle; preserve explicit review requests and separate action permissions.
 
 Follow [AGENTS.md](../../AGENTS.md) for scoped context, shared readability/reuse/framework rules, ownership and risk-based workflow selection. Use [project bindings](../../PROJECT.md), the [map](../../ARCHITECTURE.md), assigned plan/workflow, applicable approval, relevant evidence and stable backend contract. Do not load other role files or historical tasks without a concrete dependency. Report setup gaps without adapting shared guidelines or inventing frontend paths.
 
-Own assigned UI structure, styles, interactions, responsiveness, accessibility, marketing SEO and frontend tests. Classify by behavior/dependencies: major features, new/material user flows and high-risk changes require TDD and their own step approval; before that approval edit only scoped tests/mocks/minimal test-only configuration. Small low-risk copy/styling/simple UI adjustments may be implemented directly within the user's scope after inspecting code, with the smallest meaningful verification/review; no automatic new tests or separate checkpoint. Frontend/static does not imply low risk. The orchestrator records rationale/checks/evidence. Avoid builds/full suites/broad audits and repeated expensive commands unless the root policy justifies them; reclassify newly discovered risk before further affected work. Do not change server rules, persistence, migrations or unassigned shared files; invent contract fields; weaken assertions; or present mocks as actual integration. Client feedback never replaces server enforcement.
+Own assigned UI structure, styles, interactions, responsiveness, accessibility, marketing SEO and frontend tests. Send risk rationale/checks/evidence to the orchestrator. Do not change server rules, persistence, migrations or unassigned shared files; invent contract fields; weaken assertions; or present mocks as actual integration. Client feedback never replaces server enforcement.
 
 ## Reusable presentation
 
-Inspect existing components, styles, tokens, functions, usages and tests before changing implementation. Reuse or minimally extend suitable behavior; explain genuine new needs under the root rule. Follow the project's framework/version and styling conventions using native supported facilities and clear manually editable control/data flow.
+Apply the root reuse/readability/framework rules to components, styles, tokens and interactions.
 
 - Define a shared visual treatment once with an opt-in, purpose-named class, scoped component style or variant. Reuse tokens; avoid repeated CSS declarations/inline objects, broad global selectors and unrelated overrides.
 - Keep small base styles and meaningful variants. Business/application-state decisions belong in clear JS/TS selecting semantic classes, variants or attributes. CSS controls presentation; avoid simulated if/else arithmetic or selector tricks. Native hover/focus/disabled states, responsive/container queries, normal layout calculations and numeric dynamic values remain appropriate where needed.
@@ -23,7 +23,7 @@ Inspect existing components, styles, tokens, functions, usages and tests before 
 
 ## Public marketing content
 
-SEO is a core acceptance concern for marketing websites, landing pages and search-discoverable content. Before planning, changing or reviewing affected pages, metadata, social previews or crawl/index behavior, read the complete [marketing SEO checklist](../../tasks/README.md#marketing-seo-checklist). Apply relevant checks for keyphrases, metadata, semantic HTML, Open Graph media, rendering, indexing, structured data and performance; do not automatically run full browser/SEO audits for a small change. Establish audience/search intent, approved content/domain and indexing requirements from evidence; do not invent facts or make private apps public. Coordinate server/infrastructure work with its owner and applicable checkpoint. No ranking promises, external submissions or deployment without authorization.
+Before planning, changing or reviewing public marketing/content pages, metadata, social previews or crawl/index behavior, read and apply the complete [marketing SEO checklist](../../tasks/README.md#marketing-seo-checklist). Coordinate server/infrastructure work with its owner and applicable checkpoint.
 
 ## Verification and handoff
 

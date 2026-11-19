@@ -6,7 +6,7 @@ Shared policy is canonical in [AGENTS.md](../AGENTS.md); concrete project bindin
 
 Use the root [README.md](../README.md) for exact npx initialization, update, resolve and legacy-role migration commands. Installation alone does not place guidance at the project root or adapt it. Preserve existing instructions and the receiving project's manifest/README. Package and CLI copy only eight Markdown guides/forms plus three .codex/agents/*.toml roles; source TASK-* history is excluded, not deleted. Review legacy roles and staged TOML before explicit resolution; old custom roles are never automatically deleted.
 
-Keep .ai-workflow-scaffold/ baselines, pending artifacts and migration backups while needed; they are active tracking/recovery state. Follow documented update/resolve procedures, preserve edited incoming artifacts and inspect clean merges for meaning. Never reset state to force success or assume a selected older package fetches a newer revision.
+Preserve active .ai-workflow-scaffold/ tracking/recovery state and follow the root README's update/resolve procedures.
 
 ## First-use procedure
 
@@ -25,7 +25,8 @@ This is a narrow, orchestrator-only documentation setup permission, not authoriz
 
 Installing a package does not by itself ensure that the host reads its AGENTS.md or places guidelines in the project root. Markdown guidance alone does not implement package delivery; verify the actual CLI/copy path described in the [root README](../README.md) before claiming first-use setup is reachable.
 
-When managed updates are used, `.ai-workflow-scaffold/` is active tool state, not disposable setup scaffolding. Preserve its saved upstream baselines and pending review artifacts during adaptation/cleanup. Use the documented update/resolve commands instead of resetting state to make an update appear successful. The updater can combine non-overlapping textual changes; review results for project meaning and manually resolve overlapping edits or unknown legacy originals. Do not reintroduce removed setup sections merely to match a template, and do not count a clean text merge as application verification.
+For managed updates, follow [preservation and conflict handling](../README.md#update-an-adopted-project). Do not reset tracking state, reintroduce deliberately removed setup sections merely to match a template, or count a clean text merge as application verification.
+
 ## Create a task
 
 For small direct low-risk work, use the [compact form](_template/plans.md#compact-direct-work): one entry in an existing relevant plan or a new plans.md, without mandatory todo/done files. Keep goal/authorization, risk/files/approach/check selection, actual evidence/review/limits and current status. For test-first or complex/multi-step work, select an unused TASK-NNN ID, use the short/expanded plan and derive [todo.md](_template/todo.md) and [done.md](_template/done.md). Remove unused form instructions; preserve applicable criteria, cases and approvals. Do not delete existing records or fabricate completion. Planning-only requests stop before implementation.
@@ -40,15 +41,7 @@ The plan is canonical for requirements, applicable cases/approval and actual res
 
 ## Execute, review and resume
 
-TDD and the additional implementation-approval checkpoint have the same risk trigger. Direct low-risk work proceeds under the original request, including routine fixes within scope; writing/running a focused test does not add a checkpoint. New risk or changed approved expectations/scope requires reclassification and any applicable renewed approval. Explicit review-first requests and separate host/action permissions remain binding.
-
-Record workflow/risk rationale and selected checks using [AGENTS.md](../AGENTS.md#classify-the-change-and-select-verification). For major features, new/material flows and high-risk behavior, follow its test-first cycle and step-specific approval; backend approval does not approve dependent test-first frontend work. Small low-risk changes may proceed directly within the user's scope after inspection, then focused verification/review. No new test or failing baseline is automatic for that workflow. Do not classify by frontend/backend labels or file size. Prefer focused regression tests for fixes; broaden checks only for relevant evidence, uncertainty, requirements or user requests.
-
-Use the assigned [backend](../.codex/agents/backend.toml), [frontend](../.codex/agents/frontend.toml) or [reviewer](../.codex/agents/reviewer.toml) duties only when relevant. Concrete paths come from PROJECT.md and the active plan. Stabilize contracts before dependent implementation; mocks disclose their limits. Shared files have one owner; reviewers report without edits. If delegation is unavailable, declare sequential phases and label review self-review. Provide focused handoffs rather than entire chat histories.
-
-Test-first states: planned → tests in progress → awaiting user approval → implementation in progress → in review → done. Direct states: planned → implementation in progress → in review → done. Test-quality review belongs to tests in progress; in review means post-implementation. Blocked/cancelled work retains reason/last valid stage; cancellation is not completion. Resume with scoped context, current workflow/rationale, applicable approval and intervening changes. Reclassify discovered risk before further affected implementation. Move individual completed IDs to done only after applicable closure conditions; leave other entries pending.
-
-Update affected map entries when responsibilities, important locations, contracts or commands change. Follow root concise defaults: brief meaningful progress updates, compact approval summaries and usually 1–3 bullets for routine final responses/handoffs. Link canonical evidence rather than repeat it; omit empty categories and irrelevant boilerplate. Expand for material risks or requested detail, never reduce code quality or verification. Passing tests support covered behavior, not universal correctness.
+Follow AGENTS.md for [risk/verification](../AGENTS.md#classify-the-change-and-select-verification), the [test-first cycle](../AGENTS.md#test-first-cycle-repeat-for-each-coherent-step), [ownership/handoffs](../AGENTS.md#orchestration-and-ownership), [status/resume](../AGENTS.md#status-and-resuming) and [reporting](../AGENTS.md#communication-and-completion-report). Use only the assigned role; PROJECT.md and the active plan define concrete paths. Update affected map entries when responsibilities, locations, contracts or commands change.
 
 ## Marketing SEO checklist
 

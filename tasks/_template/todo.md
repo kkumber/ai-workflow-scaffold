@@ -14,4 +14,4 @@ Status: planned
 - Blocker/cancellation and affected work: [TODO or None; retain partial-change disposition]
 - Exact next action / handoff: [TODO]
 
-Update only changed status, blockers and next action; keep requirements, selected checks and results in the plan. For small tasks, combine resume fields into one line when relevant facts remain explicit. Use the root states for the selected workflow; direct work skips tests-first/awaiting-approval stages. Preserve blocked/cancelled reasons. Move individual completed IDs to done only after applicable approval, verification and required review. Leave other work pending; never rename the whole ledger or fabricate completion.
+Follow root [status/resume](../../AGENTS.md#status-and-resuming) and [closure](../../AGENTS.md#6-verify-review-and-close) rules. Update changed pending facts only; keep requirements/checks/results in the plan. Small tasks may combine resume fields without omitting facts. Move only completed IDs; leave other work pending.
