@@ -23,6 +23,10 @@ ARCHITECTURE.md                    <-- this navigation and ownership guide
   backend.toml                    <-- backend role, medium reasoning, inherited model
   frontend.toml                   <-- frontend/SEO role, medium reasoning, inherited model
   reviewer.toml                   <-- read-only review role, high reasoning, inherited model
+.claude/agents/
+  backend.md                      <-- Claude mirror of backend.toml, medium effort
+  frontend.md                     <-- Claude mirror of frontend.toml, medium effort
+  reviewer.md                     <-- Claude mirror of reviewer.toml, high effort
 tasks/
   README.md                       <-- adoption, execution, and resume guide
   _template/
@@ -60,6 +64,8 @@ Follow [root ownership rules](AGENTS.md#orchestration-and-ownership); PROJECT.md
 The Markdown task forms define workflow records; the CLI provides local initialization, tracked updates, and conflict acknowledgment through versioned state. It performs no remote fetches, application operations, or deployments. There are no established receiving-application routes, database schemas, or shared application runtime types. Codex role definitions are described below.
 
 The three standalone Codex TOML files are project-scoped agent definitions, discovered by supported Codex clients. Existing tracked Markdown-role layouts are fixed compatibility inputs: the update engine validates that exact old allowlist, saves pre-codex-agents-state.json under receiving-project update metadata, retains unchanged guide baselines, and stages unknown-baseline TOML replacements. Old role files and pending artifacts are preserved for manual integration; normal new-layout updates follow after resolution. No personal/global/main Codex config is changed.
+
+The three `.claude/agents/*.md` files mirror the Codex names, descriptions, instructions and effort levels using Claude YAML frontmatter and Markdown bodies. Models remain unset. These repository-local additions are outside the initializer's eleven-file managed set.
 
 ## Tests and commands
 
