@@ -1,6 +1,6 @@
 # Codex Workflow Scaffold
 
-Project guidance and standalone Codex agent configurations for an orchestrator, backend owner, frontend owner, and read-only reviewer. It provides setup records, role boundaries, reusable task forms, and risk-based implementation: TDD with user checkpoints for major features, material flows and high-risk behavior; direct implementation with focused verification for small low-risk changes.
+Project guidance and standalone Codex agent configurations for an orchestrator, backend owner, frontend owner, and read-only reviewer. It provides setup records, role boundaries, reusable task forms, and risk-based implementation: tests-first for major features, complex behavior, material flows and high-risk work; direct implementation with focused verification for small low-risk changes. User approval is assessed separately: ordinary agreed-scope work proceeds without a pause, while high-risk work retains an explicit checkpoint. See the [approval policy](AGENTS.md#decide-when-user-approval-is-required) for other required decisions and approval scope.
 
 This repository is the reusable scaffold source. In a receiving project, this README becomes editable project documentation: adapt it to that project's actual purpose, setup, and commands using the instructions below.
 

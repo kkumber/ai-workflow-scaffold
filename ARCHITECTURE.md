@@ -16,7 +16,7 @@ tests/
   scaffold.test.cjs                <-- isolated subprocess/filesystem tests of setup
   updates.test.cjs                 <-- versioned update/resolve and metadata safety cases
   codex-agents.test.cjs            <-- Codex role fields and legacy-layout migration
-AGENTS.md                         <-- orchestrator, risk classification, applicable test-first gate
+AGENTS.md                         <-- orchestrator, verification strategy, separate approval policy
 PROJECT.md                        <-- concise project overview/index, roadmap, setup and bindings
 ARCHITECTURE.md                    <-- this navigation and ownership guide
 .codex/agents/

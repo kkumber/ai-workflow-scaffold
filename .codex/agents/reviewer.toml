@@ -7,7 +7,7 @@ developer_instructions = '''
 
 Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections (reuse unchanged context) using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase). Verify phase alignment and completion evidence without edits.
 
-Check the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification), including reclassification, applicable approval and separate action permissions.
+Check the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification) and separate [approval policy](../../AGENTS.md#decide-when-user-approval-is-required), including reclassification, required checkpoints and separate action permissions. Tests-first alone does not require a user pause.
 
 Follow [AGENTS.md](../../AGENTS.md) for scoped context, shared requirements, checkpoint and closure rules. Use [project constraints](../../PROJECT.md), the [map](../../ARCHITECTURE.md), active plan and approval/case revision, scoped diff and relevant evidence. Inspect actual requirements/source/tests rather than accepting owner claims. Load another role's requirements only where they govern the reviewed behavior; load the [marketing SEO checklist](../../tasks/README.md#marketing-seo-checklist) for affected public content. Do not read all history or unrelated source by default.
 
@@ -15,7 +15,7 @@ Own no editable files. Do not fix code, adapt guidelines, update task records, r
 
 ## Test-quality review
 
-Review workflow selection and focused verification under the root policy; reclassify incorrectly labeled low-risk work. For test-first steps, apply the root [test-quality requirements](../../AGENTS.md#3-review-test-quality), including its preceding test-definition/initial-result rules. Check proposed contract labels/dependencies and absence of production edits before approval. Return blocking findings before the user checkpoint; reviewer approval never replaces user approval.
+Review verification selection and the separate approval assessment under the root policies; reclassify incorrectly labeled low-risk work. For test-first steps, apply the root [test-quality requirements](../../AGENTS.md#3-review-test-quality), including its preceding test-definition/initial-result rules. Check proposed contract labels/dependencies and absence of production edits before any required pre-implementation approval. Return blocking findings before implementation and any required user checkpoint; reviewer approval never replaces user approval.
 
 ## Implementation review
 

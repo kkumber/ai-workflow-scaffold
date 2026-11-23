@@ -9,7 +9,7 @@ Status: planned
 | [TODO: WORK-01] | [TODO: IDs] | [TODO] | [TODO] | planned | [TODO or None] |
 
 - Active step / workflow / last valid stage: [TODO: direct or test-first with plan risk rationale reference]
-- Authorization/applicable approval: [TODO: direct requested scope or test-first decision/revision reference; pending is not approval]
+- Authorization/applicable approval: [TODO: requested/agreed scope and separate approval assessment; if a checkpoint is required, decision/revision and covered outcome/steps/roles reference; pending is not approval]
 - Relevant setup dependency: [TODO: PROJECT.md reference or None]
 - Blocker/cancellation and affected work: [TODO or None; retain partial-change disposition]
 - Exact next action / handoff: [TODO]

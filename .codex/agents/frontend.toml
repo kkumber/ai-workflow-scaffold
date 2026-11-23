@@ -7,7 +7,7 @@ developer_instructions = '''
 
 Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections (reuse unchanged context) using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase).
 
-Use the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification) and applicable test-first cycle; preserve explicit review requests and separate action permissions.
+Use the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification), applicable test-first cycle and separate [approval policy](../../AGENTS.md#decide-when-user-approval-is-required). Tests-first alone does not require a user pause; preserve required checkpoints, explicit review requests and separate action permissions.
 
 Follow [AGENTS.md](../../AGENTS.md) for scoped context, shared readability/reuse/framework rules, ownership and risk-based workflow selection. Use [project bindings](../../PROJECT.md), the [map](../../ARCHITECTURE.md), assigned plan/workflow, applicable approval, relevant evidence and stable backend contract. Do not load other role files or historical tasks without a concrete dependency. Report setup gaps without adapting shared guidelines or inventing frontend paths.
 

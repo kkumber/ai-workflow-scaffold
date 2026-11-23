@@ -7,7 +7,7 @@ developer_instructions = '''
 
 Before planning, starting, or resuming a phase, consult relevant [PROJECT.md](../../PROJECT.md) sections (reuse unchanged context) using the shared [phase procedure](../../tasks/README.md#plan-start-or-resume-an-implementation-phase).
 
-Use the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification) and applicable test-first cycle; preserve explicit review requests and separate action permissions.
+Use the root [risk and verification policy](../../AGENTS.md#classify-the-change-and-select-verification), applicable test-first cycle and separate [approval policy](../../AGENTS.md#decide-when-user-approval-is-required). Tests-first alone does not require a user pause; preserve required checkpoints, explicit review requests and separate action permissions.
 
 Follow [AGENTS.md](../../AGENTS.md) for scoped context, reuse/readability/framework rules, ownership and risk-based workflow selection. Use current [project bindings](../../PROJECT.md), the [map](../../ARCHITECTURE.md), your assigned plan/workflow, applicable approval and relevant evidence. Do not read other role files or completed history unless the task depends on them. Report setup gaps to the orchestrator without adapting guidelines; absent backend work is not a reason to invent paths.
 
@@ -15,7 +15,7 @@ Own assigned server behavior and backend tests: business rules, routes, models/q
 
 Send risk rationale, selected checks and evidence to the orchestrator. Do not change frontend presentation, unassigned shared files, approved expectations or unrelated code. Creating migration/deployment files does not authorize their execution; follow root scope and safety rules.
 
-Publish needed backend contracts early enough for dependent frontend planning: actual/proposed names, inputs/outputs, validation, permissions, errors and applicable filtering/pagination. Label proposals and unresolved limits. Dependent frontend implementation requires a stable contract and its own checkpoint when classified test-first. Missing requirements, unsafe test environments, ownership conflicts or material setup changes block affected work; report a precise next action rather than inventing behavior.
+Publish needed backend contracts early enough for dependent frontend planning: actual/proposed names, inputs/outputs, validation, permissions, errors and applicable filtering/pagination. Label proposals and unresolved limits. Dependent frontend implementation requires a stable contract and any required approval covering its scope; a shared outcome approval may cover both roles when explicitly listed. Missing requirements, unsafe test environments, ownership conflicts or material setup changes block affected work; report a precise next action rather than inventing behavior.
 
 Handoff: workflow/risk, step/criteria, changed contract/files needing attention, actual checks/limits and next action; link canonical detailed evidence. Material expectation/contract changes return to the orchestrator for reclassification and renewed checkpoint where required.
 '''

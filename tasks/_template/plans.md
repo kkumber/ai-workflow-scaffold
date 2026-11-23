@@ -16,7 +16,7 @@ For a small bounded direct change, one entry in an existing relevant plan or a n
 Retain this section and remove unused expanded form instructions when copying. Expand a concern when it affects correctness, contracts, security, migration/concurrency, recovery or rollout. Do not hide an unresolved requirement in a short record.
 
 - Task/status/owner/mode/revision/active step: [TODO; disclose self-review]
-- Workflow/risk rationale and selected checks: [TODO: direct low-risk or test-first; justify from behavior/dependencies, record focused checks and escalation triggers]
+- Workflow/risk rationale and selected checks: [TODO: direct low-risk or test-first; justify from behavior/dependencies, record focused checks and escalation triggers; assess approval separately under the root policy]
 - Requirement/user decision and project reference: [TODO: link PROJECT.md setup/sections; if phased: PHASE/FEAT/GOAL IDs and prerequisite evidence; follow the shared phase procedure without duplicating requirements]
 - Observed behavior → expected outcome; scope and material decisions: [TODO: evidence and reason]
 - Exact existing/proposed files, actions, purposes and one owner per shared file: [TODO: compact inventory]
@@ -32,8 +32,8 @@ Retain this section and remove unused expanded form instructions when copying. E
 | [TODO] | [TODO] | Not run |
 
 - Check/review suitability: [TODO: selected workflow/revision/mode, actual findings/resolutions; test-first includes test-quality review, direct work reviews meaningful focused coverage]
-- Checkpoint: [TODO: required for test-first; summary, evidence references and explicit approval question. Direct work: no separate checkpoint, state basis once]
-- User authorization/applicable approval: [TODO: requested scope for direct work; actual decision/revision for test-first, pending until reply. Reclassify material discoveries]
+- Checkpoint: [TODO: root approval-policy trigger and decision/evidence, or authorized scope and reason no separate checkpoint is required; tests-first alone does not require a pause]
+- User authorization/applicable approval: [TODO: requested/agreed scope; for a required checkpoint, actual decision and covered outcome/steps/roles/case revision, pending until reply. Reclassify material discoveries]
 - Final review/acceptance: [TODO: mode, findings/dispositions, AC-to-evidence mapping, document/map changes and remaining limits; remove confirmed task-owned temporary artifacts under AGENTS.md, retain required evidence]
 - Resume: [TODO: last valid stage, approval applicability, blocker and precise next action; record changed facts only]
 
@@ -49,7 +49,7 @@ Use the following sections instead of the short form when the task warrants thei
 - Status: planned
 - Owner: [TODO: orchestrator]
 - Execution mode: [TODO: delegated or single-agent role phases; disclose self-review]
-- Workflow/risk rationale: [TODO: direct low-risk or test-first, behavior/dependency consequences; select per coherent step if mixed]
+- Workflow/risk rationale: [TODO: direct low-risk or test-first, behavior/dependency consequences; select per coherent step if mixed; separately record approval-policy trigger or basis to continue within authorized scope]
 - Selected verification and expansion triggers: [TODO: smallest meaningful checks; justify expensive checks only when relevant]
 - Requirements source: [TODO: canonical requirement references and user decisions]
 - Plan revision: [TODO: simple revision label, e.g. R1; increment on material changes]
@@ -85,11 +85,11 @@ Schema, existing data, migrations, concurrency, recovery, and rollout: [TODO: ex
 
 ## Steps, dependencies, and acceptance criteria
 
-Repeat rows as needed. Each coherent step has an explicit workflow classification; only test-first steps require a test-first checkpoint.
+Repeat rows as needed. Each coherent step has an explicit verification classification and separate approval assessment. Group technical steps under coherent outcomes; one explicit approval may cover listed steps/roles when presented together under the root approval policy.
 
 | Step | Goal / ordered implementation actions | Owner | Prerequisites / handoff | Criteria |
 |---|---|---|---|---|
-| STEP-01 | [TODO: concrete actions; after approval when test-first] | [TODO] | [TODO: stable interfaces, earlier steps] | AC-01 |
+| STEP-01 | [TODO: concrete actions; after any required approval] | [TODO] | [TODO: stable interfaces, earlier steps] | AC-01 |
 
 | Criterion | Observable requirement | Source / approved decision |
 |---|---|---|
@@ -135,21 +135,22 @@ Skipped checks: [TODO: each reason; record explicit user acceptance if required 
 - Missing cases and unsupported assumptions: [TODO]
 - Findings, owners, and resolutions: [TODO: do not claim review before it occurs]
 
-## User checkpoint: test-first steps only
+## User checkpoint: when required by the approval policy
 
-- Step / plan revision / case IDs: [TODO]
+- Approval assessment: [TODO: trigger under the root policy, or agreed scope and reason no checkpoint is required; if none, omit unused checkpoint fields and continue]
+- Outcome / covered steps and roles / plan revision / case IDs: [TODO]
 - Status: [TODO: not presented, awaiting user approval, approved, changes requested]
 - Goal and expected behavior: [TODO]
 - Cases: [TODO: reference matrix IDs; chat summarizes relevant input/action/outcome groups and significant boundaries]
 - Initial evidence: [TODO: reference command/result rows; summarize failure meaning]
 - Coverage/review: [TODO: reference limits and test-quality review above]
 - Implementation scope: [TODO: reference exact files/step above]
-- Approval question: Do you approve this step's expected behavior, test cases, and planned implementation?
+- Approval question: Do you approve this outcome's expected behavior, test cases, and listed implementation steps and roles?
 - User decision: [TODO: pending until an actual reply; accurate decision or message reference, no invented quote/time]
-- Approved scope/revision: [TODO: exact step and expectation revision; never infer blanket approval]
+- Approved scope/revision: [TODO: exact outcome, steps, roles and expectation/case revision; never infer blanket approval]
 - Feedback and changes since checkpoint: [TODO: renew checkpoint if material]
 
-For test-first steps, save evidence, update todo.md and [wait for explicit step approval](../../AGENTS.md#4-report-to-the-user-and-wait). Disclose documentation checks possible only after writing.
+When a checkpoint is required and not already satisfied, save evidence, update pending state and [wait for explicit approval](../../AGENTS.md#4-report-to-the-user-and-wait). Otherwise proceed through testing, implementation and review within agreed scope. Disclose documentation checks possible only after writing.
 
 ## Post-implementation review and acceptance
 
