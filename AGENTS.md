@@ -109,6 +109,8 @@ This cycle applies to steps classified test-first; step 4 pauses only when the a
 
 Derive expected results from requirements and explicit decisions, never from a guessed implementation. In the plan, give each case its ID, acceptance criterion, goal, Given/When/Then, test location, level, initial pass/fail expectation, and requirement basis.
 
+Group feature tests in a subdirectory named for the feature within the existing test layout. For example, a project with a `tests/Feature/` directory can use `tests/Feature/Orders/` and `tests/Feature/Billing/`. Follow the project's naming and test discovery conventions, and keep shared or cross-feature tests in the established location.
+
 Select relevant success, boundary, invalid-input, empty, error, permission, and regression cases. Do not require irrelevant categories. Distinguish new-behavior tests (normally fail initially), regression tests (reproduce a confirmed defect), and existing-behavior checks (may already pass).
 
 The owning specialist writes tests before application changes. Where a pre-implementation checkpoint is required and not yet satisfied, allowed edits are relevant tests, test-only fixtures/factories, minimal test-only configuration using the established system, and task records; production behavior must remain unchanged. Do not modify production code merely to make tests runnable.
