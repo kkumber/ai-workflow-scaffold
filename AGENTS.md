@@ -88,8 +88,8 @@ Planning-only requests do not authorize implementation. Routine planning and tes
 
 ## Classify the change and select verification
 
-- **Test-first:** write new automated tests for major features only. Cover observable behavior, important failure cases and meaningful regressions. Reuse coverage that already proves the expected behavior and skip separate tests for each helper, branch or migration.
-- **Direct:** for other work, use existing focused tests, inspection or a direct check that demonstrates the expected behavior. Straightforward logic, simple functions and routine migrations need no new test files. Verify risky changes with checks that exercise their actual effects and apply the approval policy separately.
+- **Test-first:** use this workflow only for major features. Write focused tests for new behavior, run them before implementation to confirm the expected failure, then rerun the same tests after implementation. Cover observable behavior, important failure cases and meaningful regressions. Reuse existing coverage and skip separate tests for each helper, branch or migration.
+- **Direct:** for small, straightforward changes, inspect the affected code and proceed straight to implementation without a pre-implementation test run. Verify afterward with an existing focused test, inspection or a direct check. Verify risky changes with checks that exercise their actual effects and apply the approval policy separately.
 - Judge risk by behavior, dependencies and consequences. If new risks appear, reassess the checks and approval needed. Disclose any partial implementation when reporting the baseline.
 - During a step, run only tests that cover its feature, affected contracts or related regressions. Rerun targeted checks after relevant changes or fixes. Avoid routine production builds, broad lint/type checks, browser audits and repeated expensive commands.
 - Run the full backend suite only at phase-end verification, after the phase's steps pass their focused checks and before marking the phase done. Record the suite result with the phase exit evidence. If a phase-end failure requires a fix, verify it with focused tests before rerunning the suite at phase end.
@@ -103,7 +103,7 @@ Planning-only requests do not authorize implementation. Routine planning and tes
 
 ## Test-first cycle: repeat for each coherent step
 
-This cycle applies to steps classified test-first; step 4 pauses only when the approval policy requires it. The direct workflow uses the common implementation, verification, review and evidence requirements without mandatory tests-first or a failing baseline. Both workflows honor applicable approval requirements.
+Use this cycle for major feature steps classified as test-first. Step 4 pauses only when the approval policy requires it.
 
 ### 1. Define and write tests
 
