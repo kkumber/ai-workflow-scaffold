@@ -88,7 +88,7 @@ Planning-only requests do not authorize implementation. Routine planning and tes
 
 ## Classify the change and select verification
 
-- **Test-first:** use this workflow only for major features. Write focused tests for new behavior, run them before implementation to confirm the expected failure, then rerun the same tests after implementation. Cover observable behavior, important failure cases and meaningful regressions. Reuse existing coverage and skip separate tests for each helper, branch or migration.
+- **Test-first:** use this workflow only for major features. Use the smallest set of cases that covers the agreed feature outcomes, important failure paths and affected regressions. Reuse existing coverage. Run new behavior tests before implementation to confirm that they fail for the expected reason, then rerun those same cases after implementation.
 - **Direct:** for small, straightforward changes, inspect the affected code and proceed straight to implementation without a pre-implementation test run. Verify afterward with an existing focused test, inspection or a direct check. Verify risky changes with checks that exercise their actual effects and apply the approval policy separately.
 - Judge risk by behavior, dependencies and consequences. If new risks appear, reassess the checks and approval needed. Disclose any partial implementation when reporting the baseline.
 - Run only test cases that assert the feature's new behavior or an existing outcome the change could alter, including at phase end. A shared file, dependency or call path alone is insufficient. Filter to the affected cases when a test file mixes affected and unaffected cases. Never run the full backend test suite. Avoid routine production builds, broad lint/type checks, browser audits and repeated expensive commands.
@@ -107,7 +107,7 @@ Use this cycle for major feature steps classified as test-first. Step 4 pauses o
 
 ### 1. Define and write tests
 
-Derive expected results from requirements and explicit decisions, never from a guessed implementation. In the plan, give each case its ID, acceptance criterion, goal, Given/When/Then, test location, level, initial pass/fail expectation, and requirement basis.
+Use the agreed requirements and acceptance criteria to write test assertions before changing production code. Assert the observable outcome, including any side effect the requirement governs. For example, if cancelling an order twice should issue one refund, check the refund count. Add separate tests for helpers, branches or migrations only when they cover a distinct feature outcome missing from existing coverage. In the plan, give each case its ID, acceptance criterion, goal, Given/When/Then, test location, level, initial pass/fail expectation, and requirement basis.
 
 Group feature tests in a subdirectory named for the feature within the existing test layout. For example, a project with a `tests/Feature/` directory can use `tests/Feature/Orders/` and `tests/Feature/Billing/`. Follow the project's naming and test discovery conventions, and keep shared or cross-feature tests in the established location.
 
