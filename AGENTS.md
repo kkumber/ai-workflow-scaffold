@@ -88,18 +88,18 @@ Planning-only requests do not authorize implementation. Routine planning and tes
 
 ## Classify the change and select verification
 
-- **Test-first:** require TDD for major features, complex behavior, new or materially changed user flows, and high-risk behavior such as authorization, payments, data integrity, migrations, concurrency or comparable consequences. Prefer tests-first for bug fixes when reproducing the defect clarifies expected behavior. Follow the cycle below; assess approval separately.
-- **Direct:** for small, bounded low-risk work such as copy, styling, simple frontend adjustments or straightforward functions with clear behavior, inspect relevant code/dependencies/existing tests, implement directly within the user's requested scope, then perform the smallest meaningful verification and focused review. New automated tests are optional when inspection, a direct/manual check or an existing focused check adequately covers the change. Record why that coverage is suitable; prefer focused regression tests for bug fixes. Assess approval separately.
-- Judge risk by behavior, dependencies and consequences, not line count, confidence in a predicted result, or frontend/backend labels. A small function or static page can affect security, shared behavior, accessibility or an important flow. If inspection or implementation reveals greater risk, stop affected work, reclassify and complete required test preparation and applicable approval before further affected implementation. Existing partial work is disclosed, never presented as a pre-implementation failing baseline.
-- Do not routinely run production builds, full test suites, broad lint/type checks, browser audits or repeated expensive commands. Choose focused checks first; broaden only for relevant dependencies, failures, uncertainty, explicit project requirements or the user's request. Rerun after a relevant change/fix or new concern, not merely because another phase begins. A command's duration alone does not show its model/token cost; avoid unnecessary logs, reasoning and repeated tool cycles too.
+- **Test-first:** write new automated tests for major features only. Cover observable behavior, important failure cases and meaningful regressions. Reuse coverage that already proves the expected behavior and skip separate tests for each helper, branch or migration.
+- **Direct:** for other work, use existing focused tests, inspection or a direct check that demonstrates the expected behavior. Straightforward logic, simple functions and routine migrations need no new test files. Verify risky changes with checks that exercise their actual effects and apply the approval policy separately.
+- Judge risk by behavior, dependencies and consequences. If new risks appear, reassess the checks and approval needed. Disclose any partial implementation when reporting the baseline.
+- During a step, run only tests that cover its feature, affected contracts or related regressions. Rerun targeted checks after relevant changes or fixes. Avoid routine production builds, broad lint/type checks, browser audits and repeated expensive commands.
+- Run the full backend suite only at phase-end verification, after the phase's steps pass their focused checks and before marking the phase done. Record the suite result with the phase exit evidence. If a phase-end failure requires a fix, verify it with focused tests before rerunning the suite at phase end.
 - State actual checks/results and material limits concisely. Omitting an irrelevant expensive check needs no separate permission. A required check that cannot be completed still requires explicit acceptance of reduced verification; never report omitted or blocked checks as passed. Preserve all code-quality, reuse, framework, ownership, security and applicable review requirements in both workflows.
 
 ## Decide when user approval is required
 
-- Within agreed expected behavior and authorized scope, continue tests, implementation, focused verification and review without a separate user pause. Routine implementation choices, test-first selection and review fixes do not add a checkpoint.
-- Require an explicit pre-implementation checkpoint for high-risk behavior: authorization, payments, data integrity, migrations, concurrency or comparable consequences. Complete test preparation and test-quality review before presenting the concrete behavior, cases, scope and limits under cycle step 4. A feature request alone does not satisfy this checkpoint.
-- Pause affected work for consequential unresolved requirements, material changes to agreed behavior/scope, explicit review-first requests or required acceptance of reduced verification. Prepare the decision and available evidence first; continue independent authorized work. Honor host permissions and separate external-action authorization.
-- Approve coherent outcomes rather than individual technical steps. One explicit checkpoint approval may cover several listed steps and roles when their behavior, cases, interfaces and limits are presented together. Record its actual scope/revision; do not infer approval for unlisted work, including dependencies. Reuse valid approval without asking again; renew it for material changes to the approved expectations, cases, interfaces or scope, or newly discovered high-risk work outside its coverage.
+- Request project approval only at plan or test review. For high-risk behavior such as authorization, payments, data integrity, migrations or concurrency, obtain explicit approval of the behavior, scope, verification cases and coverage limits before implementation. A plan or implementation phase approval that already covers those details satisfies the checkpoint.
+- Treat approval of a test, plan or implementation phase as authorization to finish the step or phase it covers. Record the scope once and carry it through implementation, focused verification, internal review, fixes, documentation and closure. A phase approval covers all listed steps. Report completion once at the end of the approved step or phase.
+- Bring consequential unresolved requirements, material changes outside the approved scope, newly discovered high-risk work outside that scope or required reductions in coverage back through plan or test review. Pause only the affected work and continue independent authorized work. Honor host permissions and separate external-action authorization.
 
 ## Test-first cycle: repeat for each coherent step
 
@@ -147,7 +147,7 @@ Present a compact, self-contained decision summary using the active plan. Usuall
 
 Keep complete case definitions, exact files, commands/results and review evidence in the plan; link them instead of repeating tables or logs in chat. The summary must still explain the behavior being approved, initial results, material risks/limits and scope without requiring the user to reconstruct earlier messages. Save the evidence and set the step to `awaiting user approval` before pausing. Do not change its application code or start dependent implementation. Silence, elapsed time, an earlier feature request, and an agent's own recommendation are not approval. Do not repeatedly send unchanged reports.
 
-Record the actual user decision and the outcome/steps/roles/case revision it covers; do not invent quotations or timestamps. Approval covers only the presented scope. If feedback materially changes expectations, update the plan and tests, rerun affected cases, explain differences, and request approval again.
+Record the user decision and the outcome, steps, roles and case revision it covers. If feedback changes the agreed scope materially, update the plan and tests and rerun affected cases before presenting the revised scope for review.
 
 ### 5. Implement within authorized scope
 
@@ -155,7 +155,7 @@ After test-quality review and any required approval, implement the smallest chan
 
 ### 6. Verify, review, and close
 
-Rerun requirement-based tests and justified focused regression checks. Review requirements beyond what the tests happen to cover, including correctness, scope, ownership, readability, relevant security/data risks, comments, and map updates. Return findings to the owner, rerun affected checks after fixes, and re-review. Material behavioral changes require approval assessment before affected implementation continues.
+Rerun the step's feature tests and related regression checks. Review requirements beyond what the tests cover, including correctness, scope, ownership, readability, relevant security/data risks, comments and map updates. Return findings to the owner, rerun affected checks after fixes and close the review internally.
 
 Move completed entries from todo.md to done.md with the same IDs only when applicable approval, implementation, verification, required review, and relevant document/map updates are complete. Record files, commands/results, findings/resolutions, deviations, and remaining limitations. Keep incomplete entries pending. Never rename the whole checklist to close one step.
 
@@ -168,7 +168,7 @@ Move completed entries from todo.md to done.md with the same IDs only when appli
 
 ## Status and resuming
 
-Test-first states: `planned → tests in progress → implementation in progress → in review → done`. Direct states: `planned → implementation in progress → in review → done`. Insert `awaiting user approval` before affected implementation or closure only when a required decision remains pending; tests-first alone does not add this state. Record workflow/risk and approval rationale; never invent a failed baseline or approval event. Both allow `blocked` and `cancelled` with reasons. Test-quality review stays in `tests in progress`; `in review` means post-implementation. The task is done only when every required criterion is satisfied and no blocking finding remains.
+Test-first states: `planned → tests in progress → implementation in progress → in review → done`. Direct states: `planned → implementation in progress → in review → done`. Use `awaiting user approval` only for a required plan or test review decision. Record workflow/risk and approval rationale. Both workflows allow `blocked` and `cancelled` with reasons. Test-quality review stays in `tests in progress`, and `in review` means internal post-implementation review. Close the task when every required criterion is satisfied and all blocking findings are resolved.
 
 Keep the last valid stage, dependencies, blocker, and precise next action. On resume, complete scoped orientation, check setup applicability, read the active records, verify authorization and any required approval against current expectations/tests, and inspect relevant changes if evidence might be stale. Revalidate affected tests after changes; assess approval again for material behavior/scope changes. Do not use context loss to bypass a checkpoint or repeat a still-valid approval. Cancellation preserves the reason and any partial changes; it is not completion.
 
@@ -176,7 +176,7 @@ Keep the last valid stage, dependencies, blocker, and precise next action. On re
 
 Preserve unrelated user changes. Avoid destructive repository operations and edits to generated outputs when their source is available. Keep credentials and sensitive data out of code, fixtures, comments, task records, and reports. Follow applicable authorization for external or irreversible actions. Plan approval alone does not authorize unrequested migration execution, deployment, publication, or messages to others.
 
-On a material discovery, stop affected work, update the plan/checklist, resolve consequential decisions, and renew the checkpoint where necessary. Resolve routine details using established conventions without expanding scope. Keep unaffected work moving only when independent and authorized.
+Update the plan/checklist when new facts affect it. Resolve in-scope implementation findings using established conventions and apply the approval policy to changes outside the agreed scope.
 
 ## Temporary references and debugging artifacts
 
@@ -192,7 +192,7 @@ Before deletion, check exact contents/ownership and references where relevant; v
 
 Conserve generated text, not implementation quality or verification. Length targets below are defaults, not hard limits. Expand for requested detail, consequential decisions, material failures, complex findings or necessary deliverables. Never truncate code, omit relevant checks, weaken guidelines or hide uncertainty to meet a budget.
 
-Use clear professional language. Progress updates usually need 1–2 sentences with a new finding, decision, blocker or next step; do not restate the plan or narrate routine tool calls. Honor host-required update frequency without repeating unchanged status.
+Keep user decision requests at plan or test review. During approved implementation, handle routine progress and review findings internally and surface a blocker only when it needs user action. Honor host-required progress updates and report the result when the approved step or phase ends.
 
 Routine final responses usually need 1–3 short bullets or a brief paragraph, generally under 100 words. These are ceilings to guide brevity, not quotas to fill:
 
